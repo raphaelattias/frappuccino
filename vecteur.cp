@@ -45,7 +45,9 @@ public:
     
     Vecteur addition(Vecteur vecteur2) const{
         // On souhaite déterminer la plus grande dimension des deux vecteurs afin de pouvoir manipuler deux vecteurs de tailles différentes.
-        // Aussi communément appelé dans la Communauté mathématiques "Plongement naturel"
+        // Aussi communément appelé dans le plongement naturel.
+      
+        
         Vecteur vecteur_sortie;
         if(vecteur.size() > vecteur2.vecteur.size()){
             vecteur_sortie.vecteur = vecteur;
