@@ -10,23 +10,46 @@
 #include <string>
 #include <cmath>
 #include <vector>
+#include <stdexcept>
 
 using namespace std;
 
 
 class Vecteur{
+    
+private:
+    vector<double> vecteur;
+    size_t dimension = vecteur.size();
+    
+    void equilibrage_vecteurs (Vecteur &vecteur2){
+        if (vecteur2.vecteur.size() < vecteur.size()) {
+            for (size_t i(vecteur2.vecteur.size()+1); i <= vecteur.size(); i++) {
+                vecteur2.vecteur.push_back(0);
+            }
+        }
+        
+    }
+    
+    void get_vecteur(Vecteur &vecteur2) {
+        vecteur2.vecteur = vecteur;
+    }
+    
 public:
     void augmente(double valeur_augmentee){
         vecteur.push_back(valeur_augmentee);
     }
     void set_coord(size_t rang, double nouvelle_valeur){ //si size t est faux que faire
         try {
-            if(rang <= 0 or rang > vecteur.size()){
-                throw string("error");
+            // J'ai utilisé la bibliothèque stdexcept qui gère mieux les exceptions et les erreurs, je trouve ça bg 🙂
+            if(rang > vecteur.size()){
+                throw runtime_error("Erreur: le rang entré est incorrect, plus grand/petit que la dimension du vecteur.");
+            } else if (rang <= 0){
+                throw runtime_error("Erreur: le rang entré est incorrect, égal à 0");
             }
+            
             vecteur[rang-1] = nouvelle_valeur;
-        } catch (string error) {
-            cerr << "Erreur: le rang entré est incorrect, plus grand que la dimension du vecteur (" << vecteur.size() << ") ou inférieur ou égal à 0." << endl;
+        } catch (const exception &ex) {
+            cerr << ex.what() << endl;
         }
     }
     void affiche(){
@@ -34,6 +57,7 @@ public:
             cout << el << " ";
         }
     }
+    
     bool compare(Vecteur vecteur2) const {
         for (size_t i=0; i < vecteur.size(); i++) {
             if (vecteur2.vecteur[i] != vecteur[i]) {
@@ -43,13 +67,10 @@ public:
         return true;
     }
     
-    Vecteur addition(Vecteur vecteur2) const{
+    Vecteur addition(Vecteur vecteur2) const {
         // On souhaite déterminer la plus grande dimension des deux vecteurs afin de pouvoir manipuler deux vecteurs de tailles différentes.
-        // Aussi communément appelé dans le plongement naturel.
-      
-        
-        Vecteur vecteur_sortie;
-        if(vecteur.size() > vecteur2.vecteur.size()){
+        // Aussi communément appelé dans la Communauté mathématiques "Plongement naturel"
+      /*  if(vecteur.size() > vecteur2.vecteur.size()){
             vecteur_sortie.vecteur = vecteur;
             for(size_t i=0; i < vecteur2.vecteur.size(); i++){
                 vecteur_sortie.set_coord(i+1,vecteur[i]+vecteur2.vecteur[i]);
@@ -65,13 +86,24 @@ public:
                 vecteur_sortie.set_coord(i+1,vecteur[i]+vecteur2.vecteur[i]);
                 
             }
-        }
+        }*/
+        Vecteur vecteur_sortie;
+
         
+        Vecteur va; Vecteur vb;
+        va.vecteur = vecteur; vb.vecteur = vecteur2.vecteur;
+        va.equilibrage_vecteurs(vb); vb.equilibrage_vecteurs(va);
+        
+        
+        for(size_t i=0; i < va.vecteur.size(); i++){
+            vecteur_sortie.vecteur.push_back(va.vecteur[i]+vb.vecteur[i]);
+        }
         
         return vecteur_sortie;
     }
     
     Vecteur soustraction(Vecteur vecteur2) const{
+        /*
         Vecteur vecteur_sortie;
         if(vecteur.size() > vecteur2.vecteur.size()){
             vecteur_sortie.vecteur = vecteur;
@@ -90,7 +122,22 @@ public:
                 
             }
         }
+        return vecteur_sortie;*/
+        
+        Vecteur vecteur_sortie;
+        
+        
+        Vecteur va; Vecteur vb;
+        va.vecteur = vecteur; vb.vecteur = vecteur2.vecteur;
+        va.equilibrage_vecteurs(vb); vb.equilibrage_vecteurs(va);
+        
+        
+        for(size_t i=0; i < va.vecteur.size(); i++){
+            vecteur_sortie.vecteur.push_back(va.vecteur[i]-vb.vecteur[i]);
+        }
+        
         return vecteur_sortie;
+        
     }
     
     Vecteur oppose() const {
@@ -151,24 +198,12 @@ public:
         return sqrt(norme2());
     }
     
+
     
-private:
-    vector<double> vecteur;
-    size_t dimension = vecteur.size();
 };
 
 
 
 int main(int argc, const char * argv[]) {
-    
-    Vecteur v1;
-    Vecteur v2;
-    
-    v1.augmente(0);
-    v1.augmente(2);
-    v1.augmente(-0.1);
-    
-    v1.set_coord(0, 1.0);
-    
     return 0;
 }
