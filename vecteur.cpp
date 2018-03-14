@@ -16,6 +16,23 @@
 
 using namespace std;
 
+Vecteur::Vecteur(size_t dimension): dimension(dimension){ // Only in the declaration but not in the definition
+    for(size_t i=0; i < dimension; i++){
+        augmente(0);
+    }
+}
+
+// A RAJOUTER PLUS TARD: constrcuteur avec liste d'initialsiation (plus que 3D)
+// A RAJOUTER PLUS TARD: operateur
+
+Vecteur::Vecteur(double x, double y, double z): dimension(3){
+    augmente(x);
+    augmente(y);
+    augmente(z);
+}
+
+Vecteur::Vecteur(Vecteur &V2): dimension(V2.dimension), vecteur(V2.vecteur){}
+
 
 void Vecteur::augmente(double valeur_augmentee){
     vecteur.push_back(valeur_augmentee);
@@ -185,6 +202,7 @@ double Vecteur::norme() const{
 
 
 vector<double> vecteur;
+int dimension;
 
 void Vecteur::equilibrage_vecteurs (Vecteur &vecteur2){
     if (vecteur2.vecteur.size() < vecteur.size()) {
