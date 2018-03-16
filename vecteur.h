@@ -9,6 +9,7 @@
 #pragma once
 
 #include <vector>
+#include <iostream>
 
 class Vecteur{
     
@@ -19,8 +20,8 @@ public:
     Vecteur(Vecteur &V2);
     void augmente(double valeur_augmentee);
     void set_coord(size_t rang, double nouvelle_valeur);
-    void affiche();
-    
+    std::ostream& affiche(std::ostream& sortie=std::cout) const;
+    Vecteur(std::initializer_list<double> init_list);
     bool compare(Vecteur vecteur2) const;
     
     Vecteur addition(Vecteur vecteur2) const;
@@ -33,12 +34,19 @@ public:
     
     Vecteur prod_vect(Vecteur vecteur2) const;
     
+    bool operator==(Vecteur v2);
     
     double prod_scalaire(Vecteur vecteur2) const;
     
     double norme2() const;
     
     double norme() const;
+    
+    size_t get_dimension() const;
+    
+    double get_value(size_t i) const; // il retourne la i-ème valeur du tableau
+    
+    Vecteur operator+(Vecteur vecteur2) const;
     
 private:
     
@@ -49,8 +57,12 @@ private:
     
 private:
     std::vector<double> vecteur;
-    std::size_t dimension;
+    std::size_t dimension=0;
     
 
     
 };
+
+std::ostream& operator<<(std::ostream& sortie, Vecteur const& vect);
+
+;
