@@ -6,6 +6,9 @@
 //  Copyright © 2018 Raphael Attias. All rights reserved.
 //
 
+
+//ne creer qu un unique fichier test
+
 #include "vecteur.h"
 
 #include <iostream>
@@ -25,11 +28,17 @@ Vecteur::Vecteur(size_t dimension): dimension(dimension){ // Only in the declara
 // A RAJOUTER PLUS TARD: constrcuteur avec liste d'initialsiation (plus que 3D)
 // A RAJOUTER PLUS TARD: operateur
 
+
 Vecteur::Vecteur(double x, double y, double z): dimension(3){
     augmente(x);
     augmente(y);
     augmente(z);
 }
+
+Vecteur::Vecteur(initializer_list<double> init_list): dimension(init_list.size()){
+    vecteur = vector<double>(init_list.begin(), init_list.end());
+}
+
 
 Vecteur::Vecteur(Vecteur &V2): dimension(V2.dimension), vecteur(V2.vecteur){}
 
@@ -54,10 +63,38 @@ void Vecteur::set_coord(size_t rang, double nouvelle_valeur){ //si size t est fa
         cerr << ex.what() << endl;
     }
 }
-void Vecteur::affiche(){
+ostream& Vecteur::affiche(ostream& sortie) const {
     for(auto el: vecteur){
-        cout << el << " ";
+        sortie << el << " ";
     }
+    
+    return sortie;
+}
+
+ostream& operator<<(ostream& sortie, Vecteur const& vect){/*
+    for(int i = 0; i < vect.get_dimension(); ++i ){
+        sortie << vect.get_value(i+1) << " ";
+    }*/
+    
+    return vect.affiche(sortie);
+};
+
+double Vecteur::get_value(size_t i) const {
+    return vecteur[i-1];
+}
+
+size_t Vecteur:: get_dimension() const {
+    return vecteur.size();
+}
+
+bool Vecteur::operator==(Vecteur v2){
+    return compare(v2);
+}
+
+Vecteur Vecteur::operator+(Vecteur vect2) const{
+    Vecteur sortie;
+    sortie = addition(vect2);
+    return sortie;
 }
 
 bool Vecteur::compare(Vecteur vecteur2) const {
@@ -72,29 +109,11 @@ bool Vecteur::compare(Vecteur vecteur2) const {
 Vecteur Vecteur::addition(Vecteur vecteur2) const {
     // On souhaite déterminer la plus grande dimension des deux vecteurs afin de pouvoir manipuler deux vecteurs de tailles différentes.
     // Aussi communément appelé dans la Communauté mathématiques "Plongement naturel"
-    /*  if(vecteur.size() > vecteur2.vecteur.size()){
-     vecteur_sortie.vecteur = vecteur;
-     for(size_t i=0; i < vecteur2.vecteur.size(); i++){
-     vecteur_sortie.set_coord(i+1,vecteur[i]+vecteur2.vecteur[i]);
-     }
-     } else if (vecteur.size() < vecteur2.vecteur.size()){
-     vecteur_sortie.vecteur = vecteur2.vecteur;
-     for(size_t i=0; i < vecteur.size(); i++){
-     vecteur_sortie.set_coord(i+1,vecteur[i]+vecteur2.vecteur[i]);
-     }
-     } else {
-     for(size_t i=0; i < vecteur.size(); i++){
-     vecteur_sortie.vecteur = vecteur;
-     vecteur_sortie.set_coord(i+1,vecteur[i]+vecteur2.vecteur[i]);
-     
-     }
-     }*/
     Vecteur vecteur_sortie;
-    
-    
-    Vecteur va; Vecteur vb;
-    va.vecteur = vecteur; vb.vecteur = vecteur2.vecteur;
-    va.equilibrage_vecteurs(vb); vb.equilibrage_vecteurs(va);
+
+    Vecteur va; Vecteur vb(vecteur2);
+    va.vecteur = vecteur;
+    va.equilibrage_vecteurs(vb); vb.equilibrage_vecteurs(va); //car on ne sait pas lequel des deux a la plus grande dimension
     
     
     for(size_t i=0; i < va.vecteur.size(); i++){
