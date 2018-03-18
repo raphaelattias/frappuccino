@@ -46,7 +46,11 @@ public:
     
     double get_value(size_t i) const; // il retourne la i-ème valeur du tableau
     
-    Vecteur operator+(Vecteur vecteur2) const;
+    Vecteur& operator^=(Vecteur vect2);
+    Vecteur& operator-();
+    Vecteur& operator*=(const int& i);
+    Vecteur& operator+=(Vecteur& vect2);
+    Vecteur& operator-=(Vecteur& vect2);
     
 private:
     
@@ -63,6 +67,12 @@ private:
     
 };
 
+double operator*(Vecteur v1, Vecteur v2);
+Vecteur operator^(Vecteur vect1, Vecteur vect2);
+Vecteur operator+(Vecteur vect1, Vecteur v2);
+Vecteur operator-(Vecteur vect1, Vecteur v2);
+Vecteur operator*(double i, Vecteur vect2);
+Vecteur operator*(Vecteur vect1, double i);
 std::ostream& operator<<(std::ostream& sortie, Vecteur const& vect);
 
 ;
