@@ -79,6 +79,8 @@ ostream& operator<<(ostream& sortie, Vecteur const& vect){/*
     return vect.affiche(sortie);
 };
 
+
+
 double Vecteur::get_value(size_t i) const {
     return vecteur[i-1];
 }
@@ -91,10 +93,60 @@ bool Vecteur::operator==(Vecteur v2){
     return compare(v2);
 }
 
-Vecteur Vecteur::operator+(Vecteur vect2) const{
+Vecteur operator+(Vecteur vect1, Vecteur vect2){
+    return vect1 += vect2;
+}
+
+Vecteur& Vecteur::operator+=(Vecteur& vect2){
     Vecteur sortie;
     sortie = addition(vect2);
-    return sortie;
+    *this = sortie;
+    return *this;
+}
+
+Vecteur operator-(Vecteur vect1, Vecteur vect2){
+    return vect1 -= vect2;
+}
+
+Vecteur& Vecteur::operator-(){
+    Vecteur sortie;
+    sortie = oppose();
+    *this = sortie;
+    return *this;
+}
+
+Vecteur& Vecteur::operator-=(Vecteur& vect2){
+    Vecteur sortie;
+    sortie = soustraction(vect2);
+    *this = sortie;
+    return *this;
+}
+
+Vecteur& Vecteur::operator*=(const int& i){
+    *this = mult(i);
+    return *this;
+}
+
+double operator*(Vecteur v1, Vecteur v2){
+    return v1.prod_scalaire(v2);
+}
+
+Vecteur operator*(double i, Vecteur vect1){
+    return vect1 *= i;
+}
+
+Vecteur operator*(Vecteur vect1, double i){
+    return vect1 *= i;
+}
+
+Vecteur& Vecteur::operator^=(Vecteur vect2){
+    *this = prod_vect(vect2);
+    return *this;
+}
+
+Vecteur operator^(Vecteur vect1, Vecteur vect2){
+    vect1 ^= vect2;
+    return vect1;
 }
 
 bool Vecteur::compare(Vecteur vecteur2) const {
@@ -235,5 +287,3 @@ void Vecteur::equilibrage_vecteurs (Vecteur &vecteur2){
 void Vecteur::get_vecteur(Vecteur &vecteur2) {
     vecteur2.vecteur = vecteur;
 }
-
-
