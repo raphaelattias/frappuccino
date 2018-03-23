@@ -13,15 +13,22 @@
 #include <iostream>
 
 class Oscillateur {
-private:
+protected:
     Vecteur vecteur_etat; //degrés de liberté, dimensions, paramètres ?
     Vecteur vitesse;
+    double masse;
+    double longueur;
     
 public:
-    Vecteur evolution(double t);
+    Oscillateur(Vecteur vecteur_etat={0,0,0}, Vecteur vitesse={0,0,0}, double masse=0, double longueur=0);
     
-    void afficher_evolution();
+    Vecteur evolution(double t) const;
     
-    void set_vecteurs(Vecteur vect, Vecteur vect2);
+    void afficher_evolution() const ;
     
+    void set_vecteurs(Vecteur vect_etat, Vecteur vitesse);
+    
+    Vecteur get_vitesse() const ;
+    
+    Vecteur get_etat() const ;
 };
