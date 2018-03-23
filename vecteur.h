@@ -1,5 +1,5 @@
 //
-//  vecteur.cpp
+//  vecteur.h
 //  Brouillon
 //
 //  Created by Raphael Attias on 09/03/2018.
@@ -17,7 +17,7 @@ class Vecteur{
 public:
     Vecteur(size_t dimension=0);
     Vecteur(double x, double y, double z); // Si on met un seul paramètre (ex: v1(3), quel constructeur il utilise ?
-    Vecteur(Vecteur &V2);
+    Vecteur(Vecteur const& V2);
     void augmente(double valeur_augmentee);
     void set_coord(size_t rang, double nouvelle_valeur);
     std::ostream& affiche(std::ostream& sortie=std::cout) const;
@@ -48,7 +48,7 @@ public:
     
     Vecteur& operator^=(Vecteur vect2);
     Vecteur& operator-();
-    Vecteur& operator*=(const int& i);
+    Vecteur& operator*=(const double& i);
     Vecteur& operator+=(Vecteur& vect2);
     Vecteur& operator-=(Vecteur& vect2);
     
@@ -63,7 +63,7 @@ private:
     std::vector<double> vecteur;
     std::size_t dimension=0;
     
-
+    
     
 };
 
