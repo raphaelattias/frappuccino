@@ -40,7 +40,7 @@ Vecteur::Vecteur(initializer_list<double> init_list): dimension(init_list.size()
 }
 
 
-Vecteur::Vecteur(Vecteur &V2): dimension(V2.dimension), vecteur(V2.vecteur){}
+Vecteur::Vecteur(Vecteur const& V2): dimension(V2.dimension), vecteur(V2.vecteur){}
 
 
 void Vecteur::augmente(double valeur_augmentee){
@@ -72,9 +72,9 @@ ostream& Vecteur::affiche(ostream& sortie) const {
 }
 
 ostream& operator<<(ostream& sortie, Vecteur const& vect){/*
-    for(int i = 0; i < vect.get_dimension(); ++i ){
-        sortie << vect.get_value(i+1) << " ";
-    }*/
+                                                           for(int i = 0; i < vect.get_dimension(); ++i ){
+                                                           sortie << vect.get_value(i+1) << " ";
+                                                           }*/
     
     return vect.affiche(sortie);
 };
@@ -122,7 +122,7 @@ Vecteur& Vecteur::operator-=(Vecteur& vect2){
     return *this;
 }
 
-Vecteur& Vecteur::operator*=(const int& i){
+Vecteur& Vecteur::operator*=(const double& i){
     *this = mult(i);
     return *this;
 }
@@ -162,7 +162,7 @@ Vecteur Vecteur::addition(Vecteur vecteur2) const {
     // On souhaite déterminer la plus grande dimension des deux vecteurs afin de pouvoir manipuler deux vecteurs de tailles différentes.
     // Aussi communément appelé dans la Communauté mathématiques "Plongement naturel"
     Vecteur vecteur_sortie;
-
+    
     Vecteur va; Vecteur vb(vecteur2);
     va.vecteur = vecteur;
     va.equilibrage_vecteurs(vb); vb.equilibrage_vecteurs(va); //car on ne sait pas lequel des deux a la plus grande dimension
