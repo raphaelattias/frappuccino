@@ -1,0 +1,40 @@
+REPONSES - PROJET DE PROGRAMMATION
+ATTIAS RAPHAEL & EPPLE PASCAL
+EPFL MABA2 - 2018
+
+Ce fichier regroupe toutes nos réponses aux questions posées
+semaine après semaine.
+
+
+SEMAINE 1
+
+[P1.1]
+
+Notre conception de notre classe Vecteur est simple: un vecteur
+de double et une dimension. La dimension nous semble être un attribut
+qui pourrait devenir utile pour la suite du programme.
+
+Concernant les droits d'accès, nous essayons d'encapsuler au 
+maximum notre classe Vecteur. Les attributs de notre classe sont privés, mais l'utilisateur a la possibilité de les modifier ou d'y accéder à travers différentes méthodes publiques, comme les "get" ou les "set".
+
+Au niveau des méthodes, nous n'en voyons, à ce stade, pas plus qui
+pourraient nous être utiles pour la suite du projet. La seule touche
+personnelle que nous avons apportée est la méthode "equilibrage" qui, 
+comme le nom l'indique, remet deux vecteurs de tailles différentes à la même taille (celle du plus grand). Cette méthode nous est surtout utile pour les opérations.
+
+[P1.2]
+
+Nous avons choisi le choix du plongement naturel de R^m dams R^n
+(pour m<n). Selon nous, il s'agit de la meilleiure solution. Cette 
+méthode nous permet d'éviter qu'une opération entre deux vecteurs de tailles différentes implique une perte d'information.
+
+
+SEMAINE 2
+
+[P.4.1]
+
+Oui, nous avons décidé d'utiliser un constructeur par copie pour notre classe vecteur.
+
+[P.4.2]
+
+
