@@ -7,7 +7,7 @@
 //
 
 #include "pendule.h"
-#include "oscillateur.h"
+#include "Oscillateur.h"
 #include <cmath>
 
 class Vecteur Pendule::evolutionPendule(){

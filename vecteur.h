@@ -15,13 +15,19 @@ class Vecteur{
     
     
 public:
+    
     Vecteur(size_t dimension=0);
     Vecteur(double x, double y, double z); // Si on met un seul paramètre (ex: v1(3), quel constructeur il utilise ?
     Vecteur(Vecteur const& V2);
-    void augmente(double valeur_augmentee);
-    void set_coord(size_t rang, double nouvelle_valeur);
-    std::ostream& affiche(std::ostream& sortie=std::cout) const;
     Vecteur(std::initializer_list<double> init_list);
+    
+    
+    void augmente(double valeur_augmentee);
+    
+    void set_coord(size_t rang, double nouvelle_valeur);
+    
+    std::ostream& affiche(std::ostream& sortie=std::cout) const;
+    
     bool compare(Vecteur vecteur2) const;
     
     Vecteur addition(Vecteur vecteur2) const;
@@ -34,7 +40,7 @@ public:
     
     Vecteur prod_vect(Vecteur vecteur2) const;
     
-    bool operator==(Vecteur v2);
+    bool operator==(Vecteur const& v2);
     
     double prod_scalaire(Vecteur vecteur2) const;
     
@@ -47,10 +53,10 @@ public:
     double get_value(size_t i) const; // il retourne la i-ème valeur du tableau
     
     Vecteur& operator^=(Vecteur vect2);
-    Vecteur& operator-();
+    const Vecteur operator-();
     Vecteur& operator*=(const double& i);
-    Vecteur& operator+=(Vecteur& vect2);
-    Vecteur& operator-=(Vecteur& vect2);
+    Vecteur& operator+=(Vecteur const& vect2);
+    Vecteur& operator-=(Vecteur const& vect2);
     
 private:
     
@@ -67,12 +73,15 @@ private:
     
 };
 
-double operator*(Vecteur v1, Vecteur v2);
+const double operator*(Vecteur v1, Vecteur const& v2);
 Vecteur operator^(Vecteur vect1, Vecteur vect2);
-Vecteur operator+(Vecteur vect1, Vecteur v2);
-Vecteur operator-(Vecteur vect1, Vecteur v2);
-Vecteur operator*(double i, Vecteur vect2);
-Vecteur operator*(Vecteur vect1, double i);
+const Vecteur operator+(Vecteur vect1, Vecteur const& v2);
+const Vecteur operator-(Vecteur vect1, Vecteur const& v2);
+
+
+const Vecteur operator*(double i, Vecteur vect1);
+const Vecteur operator*(Vecteur vect1, double i);
+
 std::ostream& operator<<(std::ostream& sortie, Vecteur const& vect);
 
 ;

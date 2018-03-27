@@ -6,6 +6,7 @@
 //  Copyright © 2018 Pascal Epple. All rights reserved.
 //
 
+/*
 #include <stdio.h>
 #include "vecteur.h"
 #include "Oscillateur.h"
@@ -34,3 +35,5 @@ int main(){
     cout << v4 << endl;
     return 0;
 }
+ 
+ */
