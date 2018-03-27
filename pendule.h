@@ -7,7 +7,7 @@
 //
 
 #pragma once
-#include "oscillateur.h"
+#include "Oscillateur.h"
 
 class Pendule: public Oscillateur{
 public:

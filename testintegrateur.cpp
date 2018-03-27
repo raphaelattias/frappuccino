@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <vector>
-#include "oscillateur.h"
+#include "Oscillateur.h"
 #include "vecteur.h"
 #include "pendule.h"
 
@@ -41,6 +41,7 @@ int main(){
     Vecteur v1(3.14/2, 0, 0);
     Vecteur v2(0,0,0);
     Pendule pendule;
+    cout << v1 << endl;
     /*
     O1.set_vecteurs(v1, v2);
     IntegrateurEulerCromer I1(0.00001);

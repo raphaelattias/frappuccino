@@ -19,15 +19,27 @@
 
 using namespace std;
 
-Vecteur::Vecteur(size_t dimension): dimension(dimension){ // Only in the declaration but not in the definition
+/*
+ *
+ *
+ *
+ *
+ //////////////////CONSTRUCTEURS
+ *
+ *
+ *
+ *
+ */
+
+
+//ENLEVER LA DIMENSION//
+
+Vecteur::Vecteur(size_t dimension): dimension(dimension)
+    { // Only in the declaration but not in the definition
     for(size_t i=0; i < dimension; i++){
         augmente(0);
     }
 }
-
-// A RAJOUTER PLUS TARD: constrcuteur avec liste d'initialsiation (plus que 3D)
-// A RAJOUTER PLUS TARD: operateur
-
 
 Vecteur::Vecteur(double x, double y, double z): dimension(3){
     augmente(x);
@@ -42,6 +54,17 @@ Vecteur::Vecteur(initializer_list<double> init_list): dimension(init_list.size()
 
 Vecteur::Vecteur(Vecteur const& V2): dimension(V2.dimension), vecteur(V2.vecteur){}
 
+/*
+*
+*
+*
+*
+//////////////////METHODES
+*
+*
+*
+*
+*/
 
 void Vecteur::augmente(double valeur_augmentee){
     vecteur.push_back(valeur_augmentee);
@@ -71,83 +94,17 @@ ostream& Vecteur::affiche(ostream& sortie) const {
     return sortie;
 }
 
-ostream& operator<<(ostream& sortie, Vecteur const& vect){/*
-                                                           for(int i = 0; i < vect.get_dimension(); ++i ){
-                                                           sortie << vect.get_value(i+1) << " ";
-                                                           }*/
-    
-    return vect.affiche(sortie);
-};
-
 
 
 double Vecteur::get_value(size_t i) const {
     return vecteur[i-1];
 }
 
-size_t Vecteur:: get_dimension() const {
+size_t Vecteur::get_dimension() const {
     return vecteur.size();
 }
 
-bool Vecteur::operator==(Vecteur v2){
-    return compare(v2);
-}
 
-Vecteur operator+(Vecteur vect1, Vecteur vect2){
-    return vect1 += vect2;
-}
-
-Vecteur& Vecteur::operator+=(Vecteur& vect2){
-    Vecteur sortie;
-    sortie = addition(vect2);
-    *this = sortie;
-    return *this;
-}
-
-Vecteur operator-(Vecteur vect1, Vecteur vect2){
-    return vect1 -= vect2;
-}
-
-Vecteur& Vecteur::operator-(){
-    Vecteur sortie;
-    sortie = oppose();
-    *this = sortie;
-    return *this;
-}
-
-Vecteur& Vecteur::operator-=(Vecteur& vect2){
-    Vecteur sortie;
-    sortie = soustraction(vect2);
-    *this = sortie;
-    return *this;
-}
-
-Vecteur& Vecteur::operator*=(const double& i){
-    *this = mult(i);
-    return *this;
-}
-
-double operator*(Vecteur v1, Vecteur v2){
-    return v1.prod_scalaire(v2);
-}
-
-Vecteur operator*(double i, Vecteur vect1){
-    return vect1 *= i;
-}
-
-Vecteur operator*(Vecteur vect1, double i){
-    return vect1 *= i;
-}
-
-Vecteur& Vecteur::operator^=(Vecteur vect2){
-    *this = prod_vect(vect2);
-    return *this;
-}
-
-Vecteur operator^(Vecteur vect1, Vecteur vect2){
-    vect1 ^= vect2;
-    return vect1;
-}
 
 bool Vecteur::compare(Vecteur vecteur2) const {
     for (size_t i=0; i < vecteur.size(); i++) {
@@ -176,32 +133,11 @@ Vecteur Vecteur::addition(Vecteur vecteur2) const {
 }
 
 Vecteur Vecteur::soustraction(Vecteur vecteur2) const{
-    /*
-     Vecteur vecteur_sortie;
-     if(vecteur.size() > vecteur2.vecteur.size()){
-     vecteur_sortie.vecteur = vecteur;
-     for(size_t i=0; i < vecteur2.vecteur.size(); i++){
-     vecteur_sortie.set_coord(i+1,vecteur[i]-vecteur2.vecteur[i]);
-     }
-     } else if (vecteur.size() < vecteur2.vecteur.size()){
-     vecteur_sortie.vecteur = vecteur2.vecteur;
-     for(size_t i=0; i < vecteur.size(); i++){
-     vecteur_sortie.set_coord(i+1,vecteur[i]-vecteur2.vecteur[i]);
-     }
-     } else {
-     for(size_t i=0; i < vecteur.size(); i++){
-     vecteur_sortie.vecteur = vecteur;
-     vecteur_sortie.set_coord(i+1,vecteur[i]-vecteur2.vecteur[i]);
-     
-     }
-     }
-     return vecteur_sortie;*/
-    
+
     Vecteur vecteur_sortie;
     
-    
-    Vecteur va; Vecteur vb;
-    va.vecteur = vecteur; vb.vecteur = vecteur2.vecteur;
+    Vecteur va; Vecteur vb(vecteur2);
+    va.vecteur = vecteur;
     va.equilibrage_vecteurs(vb); vb.equilibrage_vecteurs(va);
     
     
@@ -271,10 +207,6 @@ double Vecteur::norme() const{
     return sqrt(norme2());
 }
 
-
-vector<double> vecteur;
-int dimension;
-
 void Vecteur::equilibrage_vecteurs (Vecteur &vecteur2){
     if (vecteur2.vecteur.size() < vecteur.size()) {
         for (size_t i(vecteur2.vecteur.size()+1); i <= vecteur.size(); i++) {
@@ -287,3 +219,100 @@ void Vecteur::equilibrage_vecteurs (Vecteur &vecteur2){
 void Vecteur::get_vecteur(Vecteur &vecteur2) {
     vecteur2.vecteur = vecteur;
 }
+
+
+/*
+ *
+ *
+ *
+ *
+ //////////////////OPERATEURS
+ *
+ *
+ *
+ *
+ */
+
+bool Vecteur::operator==(Vecteur const& v2 ){
+    return compare(v2);
+}
+
+const Vecteur operator+(Vecteur vect1, Vecteur const& vect2){
+    return vect1 += vect2;
+}
+
+Vecteur& Vecteur::operator+=(Vecteur const& vect2){
+    Vecteur sortie;
+    sortie = addition(vect2);
+    *this = sortie;
+    return *this;
+}
+
+const Vecteur operator-(Vecteur vect1, Vecteur const& vect2){
+    return vect1 -= vect2;
+}
+
+const Vecteur Vecteur::operator-(){
+    Vecteur sortie;
+    sortie = oppose();
+    *this = sortie;
+    return *this;
+}
+
+Vecteur& Vecteur::operator-=(Vecteur const& vect2){
+    Vecteur sortie;
+    sortie = soustraction(vect2);
+    *this = sortie;
+    return *this;
+}
+
+Vecteur& Vecteur::operator*=(const double& i){
+    *this = mult(i);
+    return *this;
+}
+
+const double operator*(Vecteur v1, Vecteur const& v2){
+    return v1.prod_scalaire(v2);
+}
+
+const Vecteur operator*(double i, Vecteur vect1){
+    return vect1 *= i;
+}
+
+//PROBLEME LORSQUE JE VEUX PASSER LE PREMIER ARGUMENT EN CONST&
+//PAREIL POUR AU-DESSUS
+
+const Vecteur operator*(Vecteur vect1, double i){
+    return vect1 *= i;
+}
+
+Vecteur& Vecteur::operator^=(Vecteur vect2){
+    *this = prod_vect(vect2);
+    return *this;
+}
+
+Vecteur operator^(Vecteur vect1, Vecteur vect2){
+    vect1 ^= vect2;
+    return vect1;
+}
+
+ostream& operator<<(ostream& sortie, Vecteur const& vect){
+    return vect.affiche(sortie);
+};
+
+/*
+ *
+ *
+ *
+ *
+ //////////////////ATTRIBUTS
+ *
+ *
+ *
+ *
+ */
+
+vector<double> vecteur;
+size_t dimension;
+
+

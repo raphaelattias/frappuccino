@@ -29,6 +29,7 @@ public:
     
 };
 
+/*
 int main() {
     Apero bic;
     cout << "Super !" << endl;
@@ -36,3 +37,4 @@ int main() {
     cout << "Non merci." << endl;
     return 0;
 }
+*/

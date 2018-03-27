@@ -6,7 +6,7 @@
 //  Copyright © 2018 Pascal Epple. All rights reserved.
 //
 
-#include "oscillateur.h"
+#include "Oscillateur.h"
 #include "vecteur.h"
 
 #include <iostream>
@@ -16,10 +16,35 @@
 using namespace std;
 
 
+/*
+ *
+ *
+ *
+ *
+ //////////////////ATTRIBUTS
+ *
+ *
+ *
+ *
+ */
+
 Vecteur vecteur_etat; //degrés de liberté, dimensions, paramètres ?
 Vecteur vitesse;
 double masse;
 double longueur;
+
+
+/*
+ *
+ *
+ *
+ *
+ //////////////////METHODES
+ *
+ *
+ *
+ *
+ */
 
 Oscillateur::Oscillateur(Vecteur vecteur_etat, Vecteur vitesse, double masse, double longueur):vecteur_etat(vecteur_etat), vitesse(vitesse), masse(masse), longueur(longueur){};
 
