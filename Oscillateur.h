@@ -14,15 +14,15 @@
 
 class Oscillateur {
 protected:
-    Vecteur vecteur_etat; //degrés de liberté, dimensions, paramètres ?
+    Vecteur position; //degrés de liberté, dimensions, paramètres ?
     Vecteur vitesse;
     double masse;
     double longueur;
     
 public:
-    Oscillateur(Vecteur vecteur_etat={0,0,0}, Vecteur vitesse={0,0,0}, double masse=0, double longueur=0);
+    Oscillateur(Vecteur position={0,0,0}, Vecteur vitesse={0,0,0}, double masse=0, double longueur=0);
     
-    Vecteur evolution(double t) const ;
+    Vecteur evolution() const ;
     
     void afficher_evolution() const ;
     
@@ -30,5 +30,5 @@ public:
     
     Vecteur get_vitesse() const ;
     
-    Vecteur get_etat() const ;
+    Vecteur get_position() const ;
 };
