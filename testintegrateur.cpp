@@ -12,6 +12,9 @@
 #include "oscillateur.h"
 #include "vecteur.h"
 #include "pendule.h"
+
+#include "constantes.h"
+
 #include <iomanip>
 
 using namespace std;
@@ -65,7 +68,7 @@ int main(){
     I1.integrerEC(O1);
     O1.afficher_evolution(); cout << endl;
 
-
+    cout << g << endl;
     }
     /*
     O1.set_vecteurs(v1, v2);
