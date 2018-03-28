@@ -31,28 +31,26 @@ using namespace std;
  *
  */
 
-
 //ENLEVER LA DIMENSION//
 
-Vecteur::Vecteur(size_t dimension): dimension(dimension)
+Vecteur::Vecteur(size_t dimension)
     { // Only in the declaration but not in the definition
     for(size_t i=0; i < dimension; i++){
         augmente(0);
     }
 }
 
-Vecteur::Vecteur(double x, double y, double z): dimension(3){
+Vecteur::Vecteur(double x, double y, double z) {
     augmente(x);
     augmente(y);
     augmente(z);
 }
 
-Vecteur::Vecteur(initializer_list<double> init_list): dimension(init_list.size()){
+Vecteur::Vecteur(initializer_list<double> init_list) {
     vecteur = vector<double>(init_list.begin(), init_list.end());
 }
 
-
-Vecteur::Vecteur(Vecteur const& V2): dimension(V2.dimension), vecteur(V2.vecteur){}
+Vecteur::Vecteur(Vecteur const& V2): vecteur(V2.vecteur){}
 
 /*
 *
@@ -275,7 +273,7 @@ const double operator*(Vecteur v1, Vecteur const& v2){
     return v1.prod_scalaire(v2);
 }
 
-const Vecteur operator*(double i, Vecteur vect1){
+const Vecteur operator*(double const& i, Vecteur vect1){
     return vect1 *= i;
 }
 
@@ -313,6 +311,3 @@ ostream& operator<<(ostream& sortie, Vecteur const& vect){
  */
 
 vector<double> vecteur;
-size_t dimension;
-
-

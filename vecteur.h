@@ -79,7 +79,7 @@ const Vecteur operator+(Vecteur vect1, Vecteur const& v2);
 const Vecteur operator-(Vecteur vect1, Vecteur const& v2);
 
 
-const Vecteur operator*(double i, Vecteur vect1);
+const Vecteur operator*(double const& i, Vecteur vect1);
 const Vecteur operator*(Vecteur vect1, double i);
 
 std::ostream& operator<<(std::ostream& sortie, Vecteur const& vect);
