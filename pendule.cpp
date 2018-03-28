@@ -7,12 +7,24 @@
 //
 
 #include "pendule.h"
-#include "Oscillateur.h"
+#include "oscillateur.h"
 #include <cmath>
 
-class Vecteur Pendule::evolutionPendule(){
-    class Vecteur sortie((-9.81/longueur)*vecteur_etat.get_value(1), 0, 0);
-        return sortie;
-};
+
+
+Pendule::Pendule(Vecteur position, Vecteur vitesse, double masse, double longueur, double lambda):
+    Oscillateur(position,vitesse,masse, longueur), lambda(lambda){};
+
+double lambda;
+
+Vecteur Pendule::evolution(){
+    /*
+    Vecteur sortie({(-9.81/longueur)*sin(position.get_value(1))});
+     */
+    Vecteur sortie({0,-9.81});
+    return sortie;
+}
+
+
 
 
