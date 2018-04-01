@@ -29,12 +29,27 @@ Nous avons choisi le choix du plongement naturel de R^m dams R^n
 méthode nous permet d'éviter qu'une opération entre deux vecteurs de tailles différentes implique une perte d'information.
 
 
-SEMAINE 2
+SEMAINE 4
 
 [P.4.1]
 
-Oui, nous avons décidé d'utiliser un constructeur par copie pour notre classe vecteur.
+Oui, nous avons décidé d'utiliser un constructeur par copie pour notre classe vecteur. En effet un constructeur de copie permet de faciliter les tests effectués autour de la classe Vecteur. Elle autorise aussi une approche plus intuitive et moins lourde à la classe Vecteur.
 
 [P.4.2]
 
+a. b. OK JE SAIS PAS TROP MAIS JE PENSE QUE ÇA CHANGE RIEN AU NIVEAU DES ATTRIBUTS ET QUE LA DIFFICULTE MAJEURE EST FAIRE MODULO 2PI POUR LES ANGLES, OU ECRIRE UN CONSTRUCTEUR D'INTIALISATION QUI SAURAIT FAIRE LA DIFFERENCE ENTRE DES ANGLES ET DES DISTANCES.
 
+[P.4.3]
+
+Nous avons introduit les opérateurs "cout <<", "!=" et "==" afin d'assurer une continuité entre les opérateurs les plus répendus en C++ dans la manipulation d'int ou de double. L'objectif étant de rendre l'utilisation de Vecteur intuitive.
+
+
+SEMAINE 6
+
+[P.6.1] 
+
+JE PENSE QU'IL FAUDRA PARLER DE POLYMORPHISME ET D'HERITAGE DONC JE PREFERE QU'ON LE FASSE ENSEMBLE BSX
+
+[P.6.2]
+
+La classe IntegrateurEulerCromer hérite de la super classe Integrateur. En effet au calcul d'intégration près, IntegrateurEulerCromer a besoin du même constructeur de copie et de l'attribut pas de temps.
