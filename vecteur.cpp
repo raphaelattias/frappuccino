@@ -11,7 +11,6 @@
 
 #include "vecteur.h"
 
-
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -234,6 +233,10 @@ void Vecteur::get_vecteur(Vecteur &vecteur2) {
 
 bool Vecteur::operator==(Vecteur const& v2 ){
     return compare(v2);
+}
+
+bool Vecteur::operator!=(Vecteur const& v2){
+    return !compare(v2);
 }
 
 const Vecteur operator+(Vecteur vect1, Vecteur const& vect2){

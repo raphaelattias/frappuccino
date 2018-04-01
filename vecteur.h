@@ -42,6 +42,8 @@ public:
     
     bool operator==(Vecteur const& v2);
     
+    bool operator!=(Vecteur const& v2);
+    
     double prod_scalaire(Vecteur vecteur2) const;
     
     double norme2() const;
@@ -57,6 +59,8 @@ public:
     Vecteur& operator*=(const double& i);
     Vecteur& operator+=(Vecteur const& vect2);
     Vecteur& operator-=(Vecteur const& vect2);
+    
+    
     
 private:
     
