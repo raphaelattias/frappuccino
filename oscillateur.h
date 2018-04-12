@@ -24,7 +24,7 @@ public:
     
     Vecteur evolution() const ;
     
-    void afficher_evolution() const ;
+    std::ostream& afficher_evolution(std::ostream& sortie = std::cout) const ;
     
     void set_vecteurs(Vecteur vect_etat, Vecteur vitesse);
     

@@ -13,9 +13,12 @@
 #include "vecteur.h"
 #include "pendule.h"
 
+
 #include "constantes.h"
 
 #include <iomanip>
+#include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -58,18 +61,32 @@ public:
 
 
 int main(){
-    Pendule O1({0,1},{1,2}, 0.127);
-    IntegrateurEulerCromer I1(0.01);
     
-        cout << O1.evolution();
-    
-    O1.afficher_evolution(); cout <<endl;
-    for(int i=0; i <= 1000; i++){
-    I1.integrerEC(O1);
-    O1.afficher_evolution(); cout << endl;
-
-    cout << g << endl;
+    string nom_fichier;
+    nom_fichier = "dat";
+    ofstream fichier(nom_fichier);
+    if (fichier.fail()) {
+        cerr << "Impossible" << endl;
+    } else {
+        
+                        Pendule O1({0,1},{1,2}, 0.127);
+                        IntegrateurEulerCromer I1(0.01);
+        
+                        cout << O1.evolution();
+        
+                        for(int i=0; i <= 100; i++){
+                        I1.integrerEC(O1);
+                        O1.afficher_evolution();
+                        cout << endl;
+                }
+        
+        
+        fichier.close();
     }
+    
+    
+        
+    
     /*
     O1.set_vecteurs(v1, v2);
     IntegrateurEulerCromer I1(0.00001);

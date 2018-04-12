@@ -53,10 +53,11 @@ Vecteur Oscillateur::evolution() const {
     return sortie;
 }
 
-void Oscillateur::afficher_evolution() const {
-    cout << "Vecteur d'état :"; position.affiche();
-    cout << endl << "Vecteur de vitesse :"; vitesse.affiche();
-    cout << endl;
+ostream& Oscillateur::afficher_evolution(ostream& sortie) const {
+    sortie << position; sortie << "    ";
+    sortie << vitesse;
+    sortie << endl;
+    return sortie;
 }
 
 void Oscillateur::set_vecteurs(Vecteur vect_position, Vecteur vect_vitesse) {
