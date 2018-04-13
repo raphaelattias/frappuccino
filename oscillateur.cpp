@@ -48,7 +48,7 @@ double longueur;
 
 Oscillateur::Oscillateur(Vecteur vecteur_etat, Vecteur vitesse, double masse, double longueur):position(vecteur_etat), vitesse(vitesse), masse(masse), longueur(longueur){};
 
-Vecteur Oscillateur::evolution() const {
+Vecteur Oscillateur::evolution() const{
     Vecteur sortie({0, -9.81});
     return sortie;
 }
