@@ -18,13 +18,16 @@ Pendule::Pendule(Vecteur position, Vecteur vitesse, double masse, double longueu
 double lambda;
 
 Vecteur Pendule::evolution(){
-    /*
     Vecteur sortie({(-9.81/longueur)*sin(position.get_value(1))});
-     */
-    Vecteur sortie({0,-9.81});
+
     return sortie;
+
 }
 
+void Pendule::dessine(){
+    support->dessineSupport(*this);
+    
+}
 
 
 
