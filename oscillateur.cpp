@@ -32,6 +32,7 @@ Vecteur position; //degrés de liberté, dimensions, paramètres ?
 Vecteur vitesse;
 double masse;
 double longueur;
+Vecteur unitaireA;
 
 
 /*
@@ -46,9 +47,9 @@ double longueur;
  *
  */
 
-Oscillateur::Oscillateur(Vecteur vecteur_etat, Vecteur vitesse, double masse, double longueur):position(vecteur_etat), vitesse(vitesse), masse(masse), longueur(longueur){};
+Oscillateur::Oscillateur(Vecteur vecteur_etat, Vecteur vitesse, double masse, double longueur, double coefFrottement):position(vecteur_etat), vitesse(vitesse), masse(masse), longueur(longueur), coefFrottement(coefFrottement){};
 
-Vecteur Oscillateur::evolution() const {
+Vecteur Oscillateur::evolution() const{
     Vecteur sortie({0, -9.81});
     return sortie;
 }

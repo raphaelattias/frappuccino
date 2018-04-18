@@ -9,12 +9,12 @@
 #pragma once
 #include "oscillateur.h"
 
-class Pendule: public Oscillateur{
-private:
-    double lambda; // Coefficient de frottement, qui revient souvent devons nous le mettre dans oscillateur ou pas
+class Pendule: public Oscillateur {
 public:
-    Pendule(Vecteur position={0,0,0}, Vecteur vitesse={0,0,0}, double masse=0, double longueur=0, double lambda=0);
+    Pendule(Vecteur position={0,0,0}, Vecteur vitesse={0,0,0}, double masse=0, double longueur=0, double coefFrottement=0);
     
-    Vecteur evolution();
+    virtual Vecteur evolution() const override;
+    
+    virtual void dessine() override;
 };
 

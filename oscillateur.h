@@ -11,18 +11,22 @@
 #include <stdio.h>
 #include "vecteur.h"
 #include <iostream>
+#include "dessinable.h"
+#include "vecteur_unitaire.h"
 
-class Oscillateur {
+class Oscillateur: public Dessinable {
 protected:
     Vecteur position; //degrés de liberté, dimensions, paramètres ?
     Vecteur vitesse;
+    Vecteur unitaireA;
     double masse;
     double longueur;
+    double coefFrottement;
     
 public:
-    Oscillateur(Vecteur position={0,0,0}, Vecteur vitesse={0,0,0}, double masse=0, double longueur=0);
+    Oscillateur(Vecteur position={0,0,0}, Vecteur vitesse={0,0,0}, double masse=0, double longueur=0, double coefFrottement = 0);
     
-    Vecteur evolution() const ;
+    virtual Vecteur evolution() const ;
     
     std::ostream& afficher_evolution(std::ostream& sortie = std::cout) const ;
     

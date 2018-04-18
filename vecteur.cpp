@@ -118,7 +118,6 @@ Vecteur Vecteur::addition(Vecteur vecteur2) const {
     // On souhaite déterminer la plus grande dimension des deux vecteurs afin de pouvoir manipuler deux vecteurs de tailles différentes.
     // Aussi communément appelé dans la Communauté mathématiques "Plongement naturel"
     Vecteur vecteur_sortie;
-    
     Vecteur va; Vecteur vb(vecteur2);
     va.vecteur = vecteur;
     va.equilibrage_vecteurs(vb); vb.equilibrage_vecteurs(va); //car on ne sait pas lequel des deux a la plus grande dimension
@@ -219,6 +218,10 @@ void Vecteur::get_vecteur(Vecteur &vecteur2) {
     vecteur2.vecteur = vecteur;
 }
 
+
+bool Vecteur::test_unitaire() const {
+    return (norme() == 1);
+}
 
 /*
  *
