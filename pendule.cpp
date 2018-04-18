@@ -12,19 +12,20 @@
 
 
 
-Pendule::Pendule(Vecteur position, Vecteur vitesse, double masse, double longueur, double lambda):
-    Oscillateur(position,vitesse,masse, longueur), lambda(lambda){};
+Pendule::Pendule(Vecteur position, Vecteur vitesse, double masse, double longueur, double coefFrottement):
+    Oscillateur(position,vitesse,masse,longueur, coefFrottement){};
 
-double lambda;
 
-Vecteur Pendule::evolution(){
-    /*
+Vecteur Pendule::evolution() const{
     Vecteur sortie({(-9.81/longueur)*sin(position.get_value(1))});
-     */
-    Vecteur sortie({0,-9.81});
+
     return sortie;
+
 }
 
+void Pendule::dessine(){
+    support->dessineSupport(*this);
+}
 
 
 

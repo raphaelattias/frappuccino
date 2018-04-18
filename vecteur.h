@@ -52,6 +52,9 @@ public:
     
     double get_value(size_t i) const; // il retourne la i-ème valeur du tableau
     
+    bool test_unitaire() const;
+
+    
     Vecteur& operator^=(Vecteur vect2);
     const Vecteur operator-();
     Vecteur& operator*=(const double& i);
@@ -65,11 +68,10 @@ private:
     void get_vecteur(Vecteur &vecteur2);
     
     
-private:
+    
+protected:
     std::vector<double> vecteur;
     std::size_t dimension=0;
-    
-    
     
 };
 
