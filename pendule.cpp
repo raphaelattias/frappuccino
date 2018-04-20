@@ -10,6 +10,7 @@
 #include "oscillateur.h"
 #include <cmath>
 
+using namespace std;
 
 
 Pendule::Pendule(Vecteur position, Vecteur vitesse, double masse, double longueur, double coefFrottement):
@@ -21,6 +22,14 @@ Vecteur Pendule::evolution() const{
 
     return sortie;
 
+}
+
+unique_ptr<Pendule> Pendule::clone() const{
+    return unique_ptr<Pendule>(new Pendule(*this));
+}
+
+unique_ptr<Oscillateur> Pendule::copie() const{
+    return clone();
 }
 
 void Pendule::dessine(){

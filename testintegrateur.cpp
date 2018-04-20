@@ -11,9 +11,9 @@
 #include <vector>
 #include "oscillateur.h"
 #include "vecteur.h"
-#include "pendule.h"
 #include "ressort.h"
 #include "vecteur_unitaire.h"
+#include "TextViewer.h"
 
 
 #include "constantes.h"
@@ -28,9 +28,8 @@ using namespace std;
 
 
 int main(){
-    
-    
-    
+
+    /*
     Ressort R1({0.18,0,0}, {0,0,0}, 0.25, 0.15, 0.33, {0.8, 0, 0.6});
     Pendule P1({1, 1}, {0, 0}, 1, 1, 0);
     IntegrateurEulerCromer I1(0.01);
@@ -39,6 +38,7 @@ int main(){
         I1.integrer(R1);
             I1.afficherEvolution(R1);
             cout << endl;
-}
+}*/
+
     return 0;
 };

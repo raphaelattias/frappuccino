@@ -11,6 +11,8 @@
 #include <iostream>
 #include "constantes.h"
 
+using namespace std;
+
 double raideur;
 Vecteur unitaire;
 
@@ -22,6 +24,14 @@ Vecteur Ressort::evolution() const {
     Vecteur sortie({-raideur*position.get_value(1)/masse - coefFrottement*vitesse.get_value(1)/masse + g*unitaire});
     
     return sortie;
+}
+
+unique_ptr<Ressort> Ressort::clone() const{
+    return unique_ptr<Ressort>(new Ressort(*this));
+}
+
+unique_ptr<Oscillateur> Ressort::copie() const{
+    return clone();
 }
 
 void Ressort::dessine(){

@@ -16,15 +16,14 @@ Vecteur_unitaire::Vecteur_unitaire(double x, double y, double z): Vecteur(x, y, 
 
     
     
-    Vecteur_unitaire::Vecteur_unitaire(const Vecteur& copie): Vecteur(copie){normalise();};
+    Vecteur_unitaire::Vecteur_unitaire(const Vecteur& copie): Vecteur(copie) {normalise();};
     
     void Vecteur_unitaire::normalise(){
-        double n = Vecteur::norme();
         
-        if (n == 0.0){
+        if (norme() == 0.0){
             *this = Vecteur_unitaire();
-        } else {
-            /* *this = mult(1/n); HOW CAN WE FIX THIS SHIT FUCKING XXXXX NOT WORKING */ 
+        } else if (norme() != 1) {
+            *this = mult(1/norme());
         };
     }
     /*

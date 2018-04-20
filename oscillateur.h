@@ -23,6 +23,9 @@ protected:
     double longueur;
     double coefFrottement;
     
+   
+
+
 public:
     Oscillateur(Vecteur position={0,0,0}, Vecteur vitesse={0,0,0}, double masse=0, double longueur=0, double coefFrottement = 0);
     
@@ -35,4 +38,6 @@ public:
     Vecteur get_vitesse() const ;
     
     Vecteur get_position() const ;
+    
+     virtual std::unique_ptr<Oscillateur> copie() const = 0;
 };

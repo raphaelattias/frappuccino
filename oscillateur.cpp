@@ -54,7 +54,9 @@ Vecteur Oscillateur::evolution() const{
     return sortie;
 }
 
-ostream& Oscillateur::afficher_evolution(ostream& sortie) const {
+
+
+ostream& Oscillateur::afficher_evolution(ostream& sortie) const{
     sortie << position; sortie << "    ";
     sortie << vitesse;
     sortie << endl;

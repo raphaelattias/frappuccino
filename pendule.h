@@ -8,6 +8,7 @@
 
 #pragma once
 #include "oscillateur.h"
+#include "supportadessin.h"
 
 class Pendule: public Oscillateur {
 public:
@@ -16,5 +17,9 @@ public:
     virtual Vecteur evolution() const override;
     
     virtual void dessine() override;
+    std::unique_ptr<Oscillateur> copie() const override;
+
+protected:
+    std::unique_ptr<Pendule> clone() const;
 };
 
