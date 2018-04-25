@@ -13,6 +13,11 @@
 using namespace std;
 
 SupportADessin* support;
+
+void Dessinable::assignerSupport(SupportADessin& SAD){
+    SAD.remettre_a_zero();
+    this->support = &SAD;
+}
     
 void Dessinable::dessine(){};
 

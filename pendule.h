@@ -18,7 +18,6 @@ public:
     
     virtual void dessine() override;
     std::unique_ptr<Oscillateur> copie() const override;
-
 protected:
     std::unique_ptr<Pendule> clone() const;
 };

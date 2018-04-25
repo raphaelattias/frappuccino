@@ -10,6 +10,7 @@
 #include "oscillateur.h"
 #include <cmath>
 
+
 using namespace std;
 
 
@@ -35,6 +36,7 @@ unique_ptr<Oscillateur> Pendule::copie() const{
 void Pendule::dessine(){
     support->dessineSupport(*this);
 }
+
 
 
 

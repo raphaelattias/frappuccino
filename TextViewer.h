@@ -18,17 +18,22 @@
 using namespace std;
 
 class TextViewer : public SupportADessin {
+
+public:
+    TextViewer(string nom_de_fichier = "data.txt");
+protected:
+    void remettre_a_zero() override;
     
 private:
+    
     
     virtual void dessineSupport(Pendule const& pendule) override;
     virtual void dessineSupport(Ressort const& ressort) override;
     
     void dessineOsc(Oscillateur const& oscillateur);
-    
-    
-private:
     string nom_de_fichier;
+    ofstream fichier;
+
     
 };
 

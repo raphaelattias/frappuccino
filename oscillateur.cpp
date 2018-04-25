@@ -10,6 +10,7 @@
 #include "vecteur.h"
 
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include <cmath>
 
@@ -57,8 +58,9 @@ Vecteur Oscillateur::evolution() const{
 
 
 ostream& Oscillateur::afficher_evolution(ostream& sortie) const{
-    sortie << position; sortie << "    ";
-    sortie << vitesse;
+    sortie << setw(10) << position;
+    sortie <<  setw(5);
+    sortie <<  setw(10) << vitesse;
     sortie << endl;
     return sortie;
 }

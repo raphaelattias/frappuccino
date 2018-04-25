@@ -17,11 +17,17 @@
 
 using namespace std;
 
+TextViewer::TextViewer(string nom_de_fichier): nom_de_fichier(nom_de_fichier){
+    
+};
+
+void TextViewer::remettre_a_zero(){
+    //fichier.open(nom_de_fichier, ios::trunc);
+}
+
 
 void TextViewer::dessineOsc(Oscillateur const& oscillateur) {
-    string nom_fichier;
-    nom_fichier = "dat";
-    ofstream fichier(nom_fichier);
+    fichier.open(nom_de_fichier, fstream::app);
     if (fichier.fail()) {
         cerr << "Impossible" << endl;
     } else {

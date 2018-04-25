@@ -14,7 +14,7 @@
 #include "ressort.h"
 #include "vecteur_unitaire.h"
 #include "TextViewer.h"
-
+#include "pendule.h"
 
 #include "constantes.h"
 #include "integrateur.h"
@@ -29,16 +29,17 @@ using namespace std;
 
 int main(){
 
-    /*
-    Ressort R1({0.18,0,0}, {0,0,0}, 0.25, 0.15, 0.33, {0.8, 0, 0.6});
     Pendule P1({1, 1}, {0, 0}, 1, 1, 0);
     IntegrateurEulerCromer I1(0.01);
-    
-    for(int i=0; i < 1000; i++){
-        I1.integrer(R1);
-            I1.afficherEvolution(R1);
-            cout << endl;
-}*/
 
+    TextViewer fichier("slt.txt");
+    P1.assignerSupport(fichier);
+    for (int i = 0; i < 1000; i++) {
+        P1.dessine();
+        I1.integrer(P1);
+        
+    }
+    
+    
     return 0;
 };
