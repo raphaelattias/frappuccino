@@ -18,8 +18,8 @@ protected:
     Vecteur unitaire = {1,0,0};
     std::unique_ptr<Ressort> clone() const;
 public:
-    Ressort(Vecteur position={0,0,0}, Vecteur vitesse={0,0,0}, double masse=0, double coefFrottement=0, double raideur=0, Vecteur unitaire={1,0,0});
+    Ressort(SupportADessin* SAD, Vecteur position={0,0,0}, Vecteur vitesse={0,0,0}, double masse=0, double longueur = 0, double coefFrottement=0, double raideur=0, Vecteur unitaire={1,0,0});
     virtual Vecteur evolution() const override;
     std::unique_ptr<Oscillateur> copie() const override;
-    virtual void dessine() override;
+    virtual void dessine(Integrateur& I, int const& nb_de_fois) override;
 };

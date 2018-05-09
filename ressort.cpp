@@ -18,7 +18,7 @@ Vecteur unitaire;
 
 //ON A REMPLACE VECTEUR UNITAIRE PAR VECTEUR TOUT COURT PARCE Que fuck it MATE THUG LIFE
 
-Ressort::Ressort(Vecteur position, Vecteur vitesse, double masse, double coefFrottement, double raideur, Vecteur unitaire): Oscillateur(position, vitesse, masse, coefFrottement), raideur(raideur), unitaire(unitaire){};
+Ressort::Ressort(SupportADessin* SAD, Vecteur position, Vecteur vitesse, double masse, double longueur, double coefFrottement, double raideur, Vecteur unitaire): Oscillateur(SAD,position, vitesse, masse, longueur, coefFrottement), raideur(raideur), unitaire(unitaire){};
 
 Vecteur Ressort::evolution() const {
     Vecteur sortie({-raideur*position.get_value(1)/masse - coefFrottement*vitesse.get_value(1)/masse + g*unitaire});
@@ -34,6 +34,6 @@ unique_ptr<Oscillateur> Ressort::copie() const{
     return clone();
 }
 
-void Ressort::dessine(){
+void Ressort::dessine(Integrateur& I, int const& nb_de_fois){
     support->dessineSupport(*this);
 }
