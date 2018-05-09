@@ -29,6 +29,7 @@ private:
     
     virtual void dessineSupport(Pendule const& pendule) override;
     virtual void dessineSupport(Ressort const& ressort) override;
+    /*virtual void dessineSupport(Systeme const& ) override;*/
     
     void dessineOsc(Oscillateur const& oscillateur);
     string nom_de_fichier;

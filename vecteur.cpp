@@ -273,7 +273,7 @@ Vecteur& Vecteur::operator*=(const double& i){
     return *this;
 }
 
-const double operator*(Vecteur v1, Vecteur const& v2){
+double operator*(Vecteur v1, Vecteur const& v2){
     return v1.prod_scalaire(v2);
 }
 

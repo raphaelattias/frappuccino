@@ -12,10 +12,11 @@
 #include <vector>
 #include "integrateur.h"
 #include <memory>
+#include "systeme.h"
 
-using namespace::std;
 
-class Systeme: public Dessinable{
+
+
 /*
     Systeme(Integrateur integrateur, vector<Oscillateur*> init_list) : integrateur(integrateur) {
         for (int i(0); i < init_list.size() ; i++){
@@ -24,17 +25,28 @@ class Systeme: public Dessinable{
     }
     */
     
-    void ajouter(Oscillateur const& oscillateur){
+
+
+    void Systeme::dessine() {
+        for(int i = 0; i < collection.size() ; ++i) {
+            collection[i] -> dessine();
+        }
+    }
+
+    void Systeme::ajouter(Oscillateur const& oscillateur){
         collection.push_back(oscillateur.copie());
     }
     
-    void evolue(){
+    void Systeme::evolue(Integrateur I){
         for(int i=0; i < collection.size(); i++){
-            integrateur.integrer(*collection[i]);
+            I.integrer(*collection[i]);
         }
     }
+
+    /*Oscillateur Systeme::get_oscillateur(size_t i) const {
+       return *collection[i]; //on peut pas return d'objet d'une instance qui va jamais exister
+    }*/
+
     
-    Integrateur integrateur;
     vector<unique_ptr<Oscillateur>> collection;
-    
-};
+

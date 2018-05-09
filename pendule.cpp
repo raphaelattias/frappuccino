@@ -14,13 +14,12 @@
 using namespace std;
 
 
-Pendule::Pendule(Vecteur position, Vecteur vitesse, double masse, double longueur, double coefFrottement):
-    Oscillateur(position,vitesse,masse,longueur, coefFrottement){};
+Pendule::Pendule(SupportADessin* SAD,Vecteur position, Vecteur vitesse, double masse, double longueur, double coefFrottement):
+    Oscillateur(SAD, position,vitesse,masse,longueur, coefFrottement) {} ;
 
 
-Vecteur Pendule::evolution() const{
+Vecteur Pendule::evolution() const {
     Vecteur sortie({(-9.81/longueur)*sin(position.get_value(1))});
-
     return sortie;
 
 }

@@ -45,5 +45,9 @@ void TextViewer::dessineSupport(Ressort const& ressort) {
     dessineOsc(ressort);
 }
 
+/*void TextViewer::dessineSupport(Systeme const& syst) {
+
+}*/
+
     
 

@@ -29,11 +29,13 @@ using namespace std;
 
 int main(){
 
-    Pendule P1({1, 1}, {0, 0}, 1, 1, 0);
+
     IntegrateurEulerCromer I1(0.01);
 
     TextViewer fichier("slt.txt");
-    P1.assignerSupport(fichier);
+
+    Pendule P1(&fichier , {1, 1}, {0, 0}, 1, 1, 0);
+
     for (int i = 0; i < 1000; i++) {
         P1.dessine();
         I1.integrer(P1);

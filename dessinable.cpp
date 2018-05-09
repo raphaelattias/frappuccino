@@ -14,6 +14,8 @@ using namespace std;
 
 SupportADessin* support;
 
+Dessinable::Dessinable(SupportADessin* support): support(support){}
+
 void Dessinable::assignerSupport(SupportADessin& SAD){
     SAD.remettre_a_zero();
     this->support = &SAD;

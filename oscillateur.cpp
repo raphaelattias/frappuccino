@@ -48,7 +48,8 @@ Vecteur unitaireA;
  *
  */
 
-Oscillateur::Oscillateur(Vecteur vecteur_etat, Vecteur vitesse, double masse, double longueur, double coefFrottement):position(vecteur_etat), vitesse(vitesse), masse(masse), longueur(longueur), coefFrottement(coefFrottement){};
+Oscillateur::Oscillateur(SupportADessin* SAD, Vecteur vecteur_etat, Vecteur vitesse, double masse, double longueur, double coefFrottement):
+    Dessinable(SAD),position(vecteur_etat), vitesse(vitesse), masse(masse), longueur(longueur), coefFrottement(coefFrottement){};
 
 Vecteur Oscillateur::evolution() const{
     Vecteur sortie({0, -9.81});

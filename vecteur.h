@@ -75,7 +75,7 @@ protected:
     
 };
 
-const double operator*(Vecteur v1, Vecteur const& v2);
+double operator*(Vecteur v1, Vecteur const& v2);
 Vecteur operator^(Vecteur vect1, Vecteur vect2);
 const Vecteur operator+(Vecteur vect1, Vecteur const& v2);
 const Vecteur operator-(Vecteur vect1, Vecteur const& v2);
