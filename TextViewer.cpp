@@ -10,6 +10,7 @@
 #include "supportadessin.h"
 #include "TextViewer.h"
 #include "pendule.h"
+#include "systeme.h"
 #include "ressort.h"
 #include <iostream>
 #include <fstream>
@@ -18,8 +19,14 @@
 using namespace std;
 
 TextViewer::TextViewer(string nom_de_fichier): nom_de_fichier(nom_de_fichier){
-    
-};
+    fichier.open(nom_de_fichier, fstream::trunc);
+}
+
+TextViewer::~TextViewer(){
+    fichier.close();
+}
+
+
 
 void TextViewer::remettre_a_zero(){
     //fichier.open(nom_de_fichier, ios::trunc);
@@ -27,12 +34,10 @@ void TextViewer::remettre_a_zero(){
 
 
 void TextViewer::dessineOsc(Oscillateur const& oscillateur) {
-    fichier.open(nom_de_fichier, fstream::app);
     if (fichier.fail()) {
         cerr << "Impossible" << endl;
     } else {
         oscillateur.afficher_evolution(fichier);
-        fichier.close();
     }
 }
 
@@ -45,9 +50,9 @@ void TextViewer::dessineSupport(Ressort const& ressort) {
     dessineOsc(ressort);
 }
 
-/*void TextViewer::dessineSupport(Systeme const& syst) {
-
-}*/
+void TextViewer::dessineSupport(Systeme const& systeme) {
+    systeme.afficher(fichier);
+};
 
     
 

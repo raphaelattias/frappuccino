@@ -12,11 +12,11 @@
 
 class Pendule: public Oscillateur {
 public:
-    Pendule(SupportADessin* SAD,Vecteur position={0,0,0}, Vecteur vitesse={1,1,0}, double masse=0, double longueur=0, double coefFrottement=0);
+    Pendule(SupportADessin* SAD, Vecteur position={0,0,0}, Vecteur vitesse={1,1,0}, double masse=0, double longueur=0, double coefFrottement=0);
 
-    virtual Vecteur evolution() const override;
+    virtual Vecteur evolution(Vecteur position_, Vecteur vitesse_) const override;
     
-    virtual void dessine() override;
+    virtual void dessine(Integrateur* integrateur, int const& i) override;
     std::unique_ptr<Oscillateur> copie() const override;
 protected:
     std::unique_ptr<Pendule> clone() const;

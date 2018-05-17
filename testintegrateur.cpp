@@ -23,6 +23,8 @@
 #include <string>
 #include <fstream>
 #include "integrateurEulerCromer.h"
+#include "systeme.h"
+#include "integrateurNewmark.hpp"
 
 using namespace std;
 
@@ -30,17 +32,22 @@ using namespace std;
 int main(){
 
 
-    IntegrateurEulerCromer I1(0.01);
+    IntegrateurNewmark I1(0.01, 0.0001);
+    
+    TextViewer fichier("theVRAIMENTone.txt");
 
-    TextViewer fichier("slt.txt");
-
-    Pendule P1(&fichier , {1, 1}, {0, 0}, 1, 1, 0);
-
-    for (int i = 0; i < 1000; i++) {
-        P1.dessine();
-        I1.integrer(P1);
-        
-    }
+    Pendule P1(&fichier , {0, 1}, {1, 2}, 0, 0, 0);
+    Ressort R1(&fichier , {1,0}, {0,0}, 3, 1, 0.33, 1.5, {0.8, 0.6});
+    
+    P1.dessine(&I1, 10);
+/*
+    Systeme S1;
+    
+    S1.ajouter(P1);
+    S1.ajouter(R1);
+    S1.assignerSupport(fichier);
+    
+    S1.dessine(&I1, 10);*/
     
     
     return 0;

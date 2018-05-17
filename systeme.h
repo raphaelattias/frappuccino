@@ -1,4 +1,4 @@
- //
+//
 //  systeme.h
 //  PROJET
 //
@@ -12,10 +12,17 @@ using namespace std;
 
 class Systeme : public Dessinable {
 public:
-  virtual void dessine() override;
-  Oscillateur get_oscillateur(size_t i) const;
-  void ajouter(Oscillateur const& oscillateur);
-  void evolue(Integrateur I);
+    virtual void dessine(Integrateur* integrateur, int const& i = 1) override;
+    void ajouter(Oscillateur const& oscillateur);
+    void evolue(Integrateur& I1);
+    double get_size() const;
+    ostream& afficher(ostream& sortie) const;
+    
+    Vecteur get_position(int const& i) const;
+    Vecteur get_vitesse(int const& i) const;
+    double get_longueur(int const& i) const;
+    
+    
 private:
-   vector<unique_ptr<Oscillateur>> collection;
+    vector<unique_ptr<Oscillateur>> collection;
 };

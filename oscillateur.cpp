@@ -51,9 +51,13 @@ Vecteur unitaireA;
 Oscillateur::Oscillateur(SupportADessin* SAD, Vecteur vecteur_etat, Vecteur vitesse, double masse, double longueur, double coefFrottement):
     Dessinable(SAD),position(vecteur_etat), vitesse(vitesse), masse(masse), longueur(longueur), coefFrottement(coefFrottement){};
 
-Vecteur Oscillateur::evolution() const{
+Vecteur Oscillateur::evolution(Vecteur position_, Vecteur vitesse_) const{
     Vecteur sortie({0, -9.81});
     return sortie;
+}
+
+double Oscillateur::get_longueur() const{
+    return longueur;
 }
 
 

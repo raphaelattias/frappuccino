@@ -16,6 +16,6 @@ using namespace std;
 IntegrateurEulerCromer::IntegrateurEulerCromer(double pas_de_temps):Integrateur(pas_de_temps){};
 
 void IntegrateurEulerCromer::integrer(Oscillateur &O1){
-    O1.set_vecteurs(O1.get_position(), O1.get_vitesse() + pas_de_temps*O1.evolution());
+    O1.set_vecteurs(O1.get_position(), O1.get_vitesse() + pas_de_temps*O1.evolution(O1.get_position()));
     O1.set_vecteurs(O1.get_position() + pas_de_temps*O1.get_vitesse(), O1.get_vitesse());
 }

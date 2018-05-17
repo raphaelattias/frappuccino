@@ -21,6 +21,7 @@ class TextViewer : public SupportADessin {
 
 public:
     TextViewer(string nom_de_fichier = "data.txt");
+    ~TextViewer();
 protected:
     void remettre_a_zero() override;
     
@@ -29,7 +30,7 @@ private:
     
     virtual void dessineSupport(Pendule const& pendule) override;
     virtual void dessineSupport(Ressort const& ressort) override;
-    /*virtual void dessineSupport(Systeme const& ) override;*/
+    virtual void dessineSupport(Systeme const& systeme) override;
     
     void dessineOsc(Oscillateur const& oscillateur);
     string nom_de_fichier;

@@ -8,8 +8,10 @@
 
 #include "pendule.h"
 #include "oscillateur.h"
+#include "integrateur.h"
 #include <cmath>
 
+class Integrateur;
 
 using namespace std;
 
@@ -18,8 +20,8 @@ Pendule::Pendule(SupportADessin* SAD,Vecteur position, Vecteur vitesse, double m
     Oscillateur(SAD, position,vitesse,masse,longueur, coefFrottement) {} ;
 
 
-Vecteur Pendule::evolution() const {
-    Vecteur sortie({(-9.81/longueur)*sin(position.get_value(1))});
+Vecteur Pendule::evolution(Vecteur position_, Vecteur vitesse_) const {
+ Vecteur sortie({(-9.81/longueur)*sin(position_.get_value(1))});
     return sortie;
 
 }
@@ -32,8 +34,11 @@ unique_ptr<Oscillateur> Pendule::copie() const{
     return clone();
 }
 
-void Pendule::dessine(){
-    support->dessineSupport(*this);
+void Pendule::dessine(Integrateur* integrateur, int const& i){
+    for(int j = 0; j < i; j++){
+        support->dessineSupport(*this);
+        integrateur->integrer(*this);
+    }
 }
 
 
