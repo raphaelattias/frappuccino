@@ -41,7 +41,7 @@ a. b. OK JE SAIS PAS TROP MAIS JE PENSE QUE ÇA CHANGE RIEN AU NIVEAU DES ATTRIB
 
 [P.4.3]
 
-Nous avons introduit les opérateurs "cout <<", "!=" et "==" afin d'assurer une continuité entre les opérateurs les plus répendus en C++ dans la manipulation d'int ou de double. L'objectif étant de rendre l'utilisation de Vecteur intuitive.
+Nous avons introduit les opérateurs "cout <<", "!=" et "==" afin d'assurer une continuité entre les opérateurs les plus répandus en C++ dans la manipulation d'int ou de double. L'objectif étant de rendre l'utilisation de Vecteur intuitive.
 
 
 SEMAINE 6
@@ -53,3 +53,21 @@ JE PENSE QU'IL FAUDRA PARLER DE POLYMORPHISME ET D'HERITAGE DONC JE PREFERE QU'O
 [P.6.2]
 
 La classe IntegrateurEulerCromer hérite de la super classe Integrateur. En effet au calcul d'intégration près, IntegrateurEulerCromer a besoin du même constructeur de copie et de l'attribut pas de temps.
+
+SEMAINE 7
+
+[P.7.1]
+
+Les classes pendules et ressorts SONT des oscillateurs. Ce sont donc des sous-classes de la classe Oscillateur, dont elles héritent les méthodes et les attributs.
+En effet, un ressort et un pendule sont avant tout des oscillateurs, et ont des attributs communs.
+Ce qui les différencie sont les définitions des méthodes (evolue() par exemple) ou encore les attributs, comme par exemple la raideur du ressort, qui n'a aucun sens pour un pendule.
+SEMAINE 8
+
+[P.8.1]
+
+La nature de la méthode dessine est virtuelle pure. Elle est "virtuelle" car les sous-classes (pour lesquelles cela a du sens) ont toutes une méthode dessine() propre à redéfinir, et "pure" parce que la classe dessinable n'est pas un objet que l'on désire dessiner.
+
+[P.8.2]
+
+La bonne manière est de faire de notre classe Système une collection hétérogène d'Oscillateurs.
+
