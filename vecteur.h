@@ -1,13 +1,4 @@
-//
-//  vecteur.h
-//  Brouillon
-//
-//  Created by Raphael Attias on 09/03/2018.
-//  Copyright © 2018 Raphael Attias. All rights reserved.
-//
-
 #pragma once
-
 #include <vector>
 #include <iostream>
 
