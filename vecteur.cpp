@@ -1,17 +1,4 @@
-//
-//  vecteur.cpp
-//  Brouillon
-//
-//  Created by Raphael Attias on 09/03/2018.
-//  Copyright © 2018 Raphael Attias. All rights reserved.
-//
-
-
-//ne creer qu un unique fichier test
-
 #include "vecteur.h"
-
-
 #include <iostream>
 #include <string>
 #include <cmath>
