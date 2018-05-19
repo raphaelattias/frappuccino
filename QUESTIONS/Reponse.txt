@@ -33,16 +33,16 @@ SEMAINE 4
 
 [P.4.1]
 
-Oui, nous avons décidé d'utiliser un constructeur par copie pour notre classe vecteur. En effet un constructeur de copie permet de faciliter les tests effectués autour de la classe Vecteur. Elle autorise aussi une approche plus intuitive et moins lourde à la classe Vecteur.
+Oui, nous avons décidé d'utiliser un constructeur par copie pour notre classe vecteur. En effet un constructeur de copie permet de faciliter les tests effectués autour de la classe Vecteur. Elle autorise aussi une approche plus intuitive et pratique à la classe Vecteur.
 
 [P.4.2]
-
-a. b. OK JE SAIS PAS TROP MAIS JE PENSE QUE ÇA CHANGE RIEN AU NIVEAU DES ATTRIBUTS ET QUE LA DIFFICULTE MAJEURE EST FAIRE MODULO 2PI POUR LES ANGLES, OU ECRIRE UN CONSTRUCTEUR D'INTIALISATION QUI SAURAIT FAIRE LA DIFFERENCE ENTRE DES ANGLES ET DES DISTANCES.
+a. Au niveau des attributs de classe, le vector de double ne changerait pas mais il faudrait un attribut pour préciser le système de coordonnées dans lequel on travaille. Par exemple un booléen si seulement deux systèmes sont possibles ou un string.
+b. Ajouter un constructeur par coordonnées sphériques impliquerait lors de l'initialisation d'un vecteur à coordonnées sphériques d'effectuer à chaque fois l'opération modulo 2π sur les coordonnées angulaires. De plus il faudrait trouver une manière de différentier un vecteur à coordonnées sphériques d'un vecteur à coordonnées cartésiennes. i.e un vecteur (3, π/4, π/3) décrirait deux coordonnées totalement différentes.
 
 [P.4.3]
 
 Nous avons introduit les opérateurs "cout <<", "!=" et "==" afin d'assurer une continuité entre les opérateurs les plus répendus en C++ dans la manipulation d'int ou de double. L'objectif étant de rendre l'utilisation de Vecteur intuitive.
-
+Sont également présents "+", "*", "-" et "^" (ce dernier permet de faire le produit vectoriel).
 
 SEMAINE 6
 
