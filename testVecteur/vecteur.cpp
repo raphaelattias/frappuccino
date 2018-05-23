@@ -246,4 +246,5 @@ const Vecteur operator*(Vecteur vect1, double  const& i){
 
 ostream& operator<<(ostream& sortie, Vecteur const& vect){
     return vect.affiche(sortie);
-};
+}
+
