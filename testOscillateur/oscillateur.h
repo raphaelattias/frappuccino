@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include "vecteur.h"
 #include <iostream>
-#include "dessinable.h"
 
 class Oscillateur{
     
