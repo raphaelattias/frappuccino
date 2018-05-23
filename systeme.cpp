@@ -15,9 +15,6 @@
 #include "systeme.h"
 #include <iostream>
 
-
-
-
 /*
     Systeme(Integrateur integrateur, vector<Oscillateur*> init_list) : integrateur(integrateur) {
         for (int i(0); i < init_list.size() ; i++){
@@ -29,21 +26,23 @@
 
 
 void Systeme::dessine(Integrateur* integrateur, int const& i){
+    support->dessineSupport(*this);
         for(int j(0); j < collection.size(); j++){
             collection[j]->dessine(integrateur, i);
         }
+}
+
         /*
         for(int j = 0; j < i; j++){
             support->dessineSupport(*this);
             evolue(*integrateur);
         }*/
-    }
 
     void Systeme::ajouter(Oscillateur const& oscillateur){
         collection.push_back(oscillateur.copie());
     }
     
-    void Systeme::evolue(Integrateur& I1){
+    void Systeme::evolue(Integrateur& I1, int const& pas_de_temps){
         for(int i=0; i < collection.size(); i++){
             I1.integrer(*collection[i]);
         }

@@ -11,6 +11,7 @@
 #include "TextViewer.h"
 #include "pendule.h"
 #include "systeme.h"
+#include "oscillateur_couple.hpp"
 #include "ressort.h"
 #include <iostream>
 #include <fstream>
@@ -53,6 +54,10 @@ void TextViewer::dessineSupport(Ressort const& ressort) {
 void TextViewer::dessineSupport(Systeme const& systeme) {
     systeme.afficher(fichier);
 };
+
+void TextViewer::dessineSupport(PenduleDouble const& pd){
+    std::cout << pd.get_position().get_value(1) << "     " << pd.get_position2().get_value(1) << endl;
+}
 
     
 

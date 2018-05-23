@@ -10,8 +10,9 @@
 
 class IntegrateurNewmark : public Integrateur {
 public:
-    IntegrateurNewmark(double pas_de_temps = 0.01, double Epsilon = 0.01): Integrateur(pas_de_temps){};
-    virtual void integrer(Oscillateur &O1) override;
+    IntegrateurNewmark(double Epsilon = 0.0001){};
+    virtual void integrer(Oscillateur &O1, double const& pas_de_temps) override;
+    virtual void integrer(OscillateursCouples &O1, double const& pas_de_temps) override;
 protected:
     Vecteur q;
     Vecteur r;

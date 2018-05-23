@@ -1,52 +1,57 @@
 #pragma once
+
 #include <vector>
 #include <iostream>
 
 class Vecteur{
     
-    
 public:
     
+    // Constructeurs:
+    
     Vecteur(size_t dimension=0);
-    Vecteur(double x, double y, double z); // Si on met un seul paramètre (ex: v1(3), quel constructeur il utilise ?
-    Vecteur(Vecteur const& V2);
-    Vecteur(std::initializer_list<double> init_list);
+    Vecteur(double x, double y, double z);
+    Vecteur(std::initializer_list<double> const& init_list);
     
+    // Méthodes :
     
-    void augmente(double valeur_augmentee);
+    void augmente(double const& valeur_augmentee);
     
-    void set_coord(size_t rang, double nouvelle_valeur);
+    void set_coord(size_t const&  rang,  double const& nouvelle_valeur);
     
     std::ostream& affiche(std::ostream& sortie=std::cout) const;
     
-    bool compare(Vecteur vecteur2) const;
+    bool compare(Vecteur const& vecteur2) const;
     
-    Vecteur addition(Vecteur vecteur2) const;
+    Vecteur addition(Vecteur const& vecteur2) const;
     
-    Vecteur soustraction(Vecteur vecteur2) const;
+    Vecteur soustraction(Vecteur const& vecteur2) const;
     
     Vecteur oppose() const;
     
     Vecteur mult(double scalaire) const;
     
-    Vecteur prod_vect(Vecteur vecteur2) const;
+    Vecteur prod_vect(Vecteur const& vecteur2) const;
     
-    bool operator==(Vecteur const& v2);
-    
-    double prod_scalaire(Vecteur vecteur2) const;
+    double prod_scalaire(Vecteur const& vecteur2) const;
     
     double norme2() const;
     
     double norme() const;
     
+    bool test_unitaire() const;
+    
+    // Méthodes accesseurs
+    
     size_t get_dimension() const;
     
-    double get_value(size_t i) const; // il retourne la i-ème valeur du tableau
+    double get_value(size_t const& i) const; // il retourne la i-ème valeur du tableau
     
-    bool test_unitaire() const;
-
+    // Méthodes pour opérateurs internes :
     
-    Vecteur& operator^=(Vecteur vect2);
+    bool operator==(Vecteur const& v2);
+    bool operator!=(Vecteur const& v2);
+    Vecteur& operator^=(Vecteur const& vect2);
     const Vecteur operator-();
     Vecteur& operator*=(const double& i);
     Vecteur& operator+=(Vecteur const& vect2);
@@ -58,22 +63,20 @@ private:
     
     void get_vecteur(Vecteur &vecteur2);
     
-    
-    
 protected:
     std::vector<double> vecteur;
-    std::size_t dimension=0;
-    
 };
 
+
+
 double operator*(Vecteur v1, Vecteur const& v2);
-Vecteur operator^(Vecteur vect1, Vecteur vect2);
+const Vecteur operator^(Vecteur vect1, Vecteur const& vect2);
 const Vecteur operator+(Vecteur vect1, Vecteur const& v2);
 const Vecteur operator-(Vecteur vect1, Vecteur const& v2);
 
 
 const Vecteur operator*(double const& i, Vecteur vect1);
-const Vecteur operator*(Vecteur vect1, double i);
+const Vecteur operator*(Vecteur vect1, double const& i);
 
 std::ostream& operator<<(std::ostream& sortie, Vecteur const& vect);
 
