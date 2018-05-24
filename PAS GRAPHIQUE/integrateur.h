@@ -9,13 +9,11 @@
 
 
 #include "oscillateur.h"
+#include "oscillateur_couple.hpp"
 
 class Integrateur{
 public:
     // TROUVER UN MOYEN DE FAIRE VIRTUAL EN POUVANT L'UTILISER DANS SYSTEME
-    virtual void integrer(Oscillateur &O1) = 0;
-    Integrateur(double pas_de_temps=0.01);
+    virtual void integrer(Oscillateur &O1, double const& pas_de_temps = 0.01) = 0;
     void afficherEvolution(Oscillateur const& oscillateur) const;
-protected:
-    double pas_de_temps;
 };

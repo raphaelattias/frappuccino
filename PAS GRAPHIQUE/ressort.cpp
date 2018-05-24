@@ -10,6 +10,7 @@
 #include "oscillateur.h"
 #include <iostream>
 #include "constantes.h"
+#include "integrateur.h"
 
 using namespace std;
 
@@ -20,7 +21,7 @@ Vecteur unitaire;
 
 Ressort::Ressort(SupportADessin* SAD, Vecteur position, Vecteur vitesse, double masse, double longueur, double coefFrottement, double raideur, Vecteur unitaire): Oscillateur(SAD, position, vitesse, masse, longueur, coefFrottement), raideur(raideur), unitaire(unitaire){};
 
-Vecteur Ressort::evolution(Vecteur position_, Vecteur vitesse_) const {
+Vecteur Ressort::evolution(Vecteur const& position_, Vecteur const& vitesse_) const {
     Vecteur sortie({-raideur*position.get_value(1)/masse - coefFrottement*vitesse.get_value(1)/masse + g*unitaire});
     
     return sortie;
@@ -34,6 +35,11 @@ unique_ptr<Oscillateur> Ressort::copie() const{
     return clone();
 }
 
-void Ressort::dessine(){
-    support->dessineSupport(*this);
+void Ressort::dessine(Integrateur* integrateur, int const& i){
+    for(int j = 0; j < i; j++){
+        support->dessineSupport(*this);
+        if(integrateur != nullptr){
+          integrateur->integrer(*this);
+        }
+    }
 }

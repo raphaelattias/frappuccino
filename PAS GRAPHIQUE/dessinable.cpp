@@ -10,7 +10,9 @@
 #include "dessinable.h"
 #include "constantes.h"
 
+
 using namespace std;
+
 
 SupportADessin* support;
 
@@ -21,5 +23,5 @@ void Dessinable::assignerSupport(SupportADessin& SAD){
     this->support = &SAD;
 }
     
-void Dessinable::dessine(){};
+void Dessinable::dessine(Integrateur* integrateur, int const& i){};
 
