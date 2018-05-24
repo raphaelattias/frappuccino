@@ -108,6 +108,10 @@ void GLWidget::keyPressEvent(QKeyEvent* event)
   case Qt::Key_Space:
 	pause();
 	break;
+
+   case Qt::Key_O:
+      vue.vueZero();
+      break;
   };
 
   update(); // redessine

@@ -11,18 +11,21 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include "pendule.h"
+#include "TextViewer.h"
+#include "integrateurNewmark.hpp"
 
 using namespace std;
 
 int main(){
     
-    Vecteur v2(1,2,5);
-    Vecteur v1(3,2,1);
+    IntegrateurNewmark I1(0.0001);
+    TextViewer vue("sortie.txt");
+    Pendule P(&vue, {0,1}, {1,2}, 0.127, 1);
+    P.dessine(&I1, 100);
     
-    double i;
-    i = (v2 * v1);
-    cout << i;
+    
     
     return 0;
-};
-*/
+};*/
+

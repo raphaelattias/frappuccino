@@ -24,6 +24,7 @@ HEADERS += \
     vertex_shader.h \
     glsphere.h \
     vue_opengl.h \
+    qpainter.h \
     ../general/dessinable.h \
     ../general/supportadessin.h \
     ../general/pendule.h \

@@ -21,8 +21,9 @@ Pendule::Pendule(SupportADessin* SAD,Vecteur position, Vecteur vitesse, double m
     Oscillateur(SAD, position,vitesse,masse,longueur, coefFrottement) {} ;
 
 
-Vecteur Pendule::evolution(Vecteur position_, Vecteur vitesse_) const {
+Vecteur Pendule::evolution(Vecteur const& position_, Vecteur const& vitesse_) const {
  Vecteur sortie({(-g.norme()/longueur)*sin(position_.get_value(1))});
+//    Vecteur sortie({0, -9.81});
     return sortie;
 
 }

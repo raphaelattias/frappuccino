@@ -17,16 +17,22 @@ class GLWidget : public QOpenGLWidget
 {
 public:
     GLWidget(QWidget* parent = nullptr)
-        : QOpenGLWidget(parent), I1(0.01){
-    Pendule p(&vue, {1,0,0}, {0,0}, 1, 1, 0);
-    Pendule q(&vue, {2,0,0}, {0,0}, 2, 2, 0);
-    Pendule n(&vue, {0.1,0,0}, {0,0}, 2, 0.1, 0);
-    Ressort R1(&vue , {1,0}, {1,0}, 3, 0.01, 0.01, 100, {1, 0});
+        : QOpenGLWidget(parent){
+   Pendule p(&vue, {1,0,0}, {0,0}, 1, 1, 0);
+//    Pendule q(&vue, {2,0,0}, {0,0}, 2, 2, 0);
+   // Pendule n(&vue, {0.1,0,0}, {0,0}, 2, 0.1, 0);
+   // Ressort R1(&vue , {1,0}, {1,0}, 3, 0.01, 0.01, 10, {1, 0});
+   PenduleDouble P(&vue, {3,0,0}, {0,0,0}, 1, 1, 1, 1, 0, 0);
+  // PenduleDouble P1(&vue, {1,2,0}, {0,0,0}, 1, 1, 1, 0.5, 0, 0);
+
+
     s.assignerSupport(vue);
-      s.ajouter(p);
-      s.ajouter(q);
-      s.ajouter(n);
-      s.ajouter(R1);
+    s.ajouter(p);
+     /* s.ajouter(q);
+      s.ajouter(n);*/
+      //s.ajouter(R1);
+      s.ajouter(P);
+  //    s.ajouter(P1);
     }
   virtual ~GLWidget() {}
 

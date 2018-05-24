@@ -21,7 +21,7 @@ Vecteur unitaire;
 
 Ressort::Ressort(SupportADessin* SAD, Vecteur position, Vecteur vitesse, double masse, double longueur, double coefFrottement, double raideur, Vecteur unitaire): Oscillateur(SAD, position, vitesse, masse, longueur, coefFrottement), raideur(raideur), unitaire(unitaire){};
 
-Vecteur Ressort::evolution(Vecteur position_, Vecteur vitesse_) const {
+Vecteur Ressort::evolution(Vecteur const& position_, Vecteur const& vitesse_) const {
     Vecteur sortie({-raideur*position.get_value(1)/masse - coefFrottement*vitesse.get_value(1)/masse + g*unitaire});
     
     return sortie;

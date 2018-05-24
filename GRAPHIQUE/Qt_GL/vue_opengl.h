@@ -6,6 +6,8 @@
 #include "supportadessin.h"
 #include "glsphere.h"
 #include "systeme.h"
+#include "qpainter.h"
+#include "qstring.h"
 
 class VueOpenGL : public SupportADessin {
  public:
@@ -16,12 +18,14 @@ class VueOpenGL : public SupportADessin {
   void dessineAxes(QMatrix4x4 const& point_de_vue, bool en_couleur = true);
 
   virtual void remettre_a_zero() override; // je la mets pour que ca compile
-  virtual void dessineSupport(Ressort const& a_dessiner) override; //je la mets pour que ca compile
+  virtual void dessineSupport(Ressort const& a_dessiner) override;
   virtual void dessineSupport(Pendule const& a_dessiner) override;
+  virtual void dessineSupport(PenduleDouble const& a_dessiner) override;
 
   // méthodes de (ré-)initialisation
   void init();
   void initializePosition();
+  void vueZero();
 
   // méthode set
   void setProjection(QMatrix4x4 const& projection)
@@ -42,6 +46,8 @@ class VueOpenGL : public SupportADessin {
   QMatrix4x4 matrice_vue;
 
   GLSphere sphere;
+
+
 
   void dessineSphere(QMatrix4x4 const& point_de_vue,
                      double rouge = 1.0, double vert = 1.0, double bleu = 1.0);

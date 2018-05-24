@@ -9,6 +9,7 @@ SOURCES += \
     dessinable.cpp \
     integrateur.cpp \
     IntegrateurEulerCromer.cpp \
+    oscillateur_couple.cpp \
     main.cpp \
     oscillateur.cpp \
     pendule.cpp \
@@ -26,6 +27,7 @@ HEADERS += \
     integrateur.h \
     integrateurEulerCromer.h \
     oscillateur.h \
+    oscillateur_couple.hpp\
     pendule.h \
     ressort.h \
     supportadessin.h \
