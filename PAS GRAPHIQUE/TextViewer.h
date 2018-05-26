@@ -32,7 +32,10 @@ private:
     virtual void dessineSupport(Ressort const& ressort) override;
     virtual void dessineSupport(Systeme const& systeme) override;
     virtual void dessineSupport(PenduleDouble const& PenduleDouble) override;
-    
+    virtual void dessineSupport(PenduleRessort const& penduleressort) override;
+    virtual void dessineSupport(Chariot const& penduleressort) override;
+    virtual void dessineSupport(PendulesLiesRessort const& penduleressort) override;
+        virtual void dessineSupport(PenduleTriple const& penduleressort) override;
     void dessineOsc(Oscillateur const& oscillateur);
     string nom_de_fichier;
     ofstream fichier;
