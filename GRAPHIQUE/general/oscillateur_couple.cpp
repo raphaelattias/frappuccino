@@ -47,6 +47,14 @@ std::unique_ptr<Oscillateur> Chariot::copie() const{
     return clone();
 }
 
+std::unique_ptr<PenduleTriple> PenduleTriple::clone() const{
+    return std::unique_ptr<PenduleTriple>(new PenduleTriple(*this));
+}
+
+std::unique_ptr<Oscillateur> PenduleTriple::copie() const{
+    return clone();
+}
+
 std::unique_ptr<PendulesLiesRessort> PendulesLiesRessort::clone() const{
     return std::unique_ptr<PendulesLiesRessort>(new PendulesLiesRessort(*this));
 }
@@ -85,6 +93,15 @@ void Chariot::dessine(Integrateur* integrateur, int const& i){
 
 
 void PendulesLiesRessort::dessine(Integrateur* integrateur, int const& i){
+    for(int j = 0; j < i; j++){
+        support->dessineSupport(*this);
+        if(integrateur != nullptr){
+            integrateur->integrer(*this);
+        }
+    }
+}
+
+void PenduleTriple::dessine(Integrateur* integrateur, int const& i){
     for(int j = 0; j < i; j++){
         support->dessineSupport(*this);
         if(integrateur != nullptr){
@@ -145,5 +162,22 @@ double PendulesLiesRessort::get_a1() const {
 }
 double PendulesLiesRessort::get_a2() const {
     return a2;
+}
+
+double PenduleTriple::get_longueur3() const {
+    return longueur3;
+}
+
+PenduleTriple::PenduleTriple(SupportADessin* SAD, Vecteur position1, Vecteur vitesse1, double masse1, double masse2,double masse3, double longueur1, double longueur2, double longueur3, double coefFrottement1, double coefFrottement2): OscillateursCouples(SAD, position1, vitesse1, masse1, masse2, longueur1, longueur2, coefFrottement1, coefFrottement2), masse3(masse3), longueur3(longueur3){};
+
+Vecteur PenduleTriple::evolution(Vecteur const& position_, Vecteur const& vitesse_) const {
+    Vecteur sortie(0, 0, 0);
+    double teta12 = (position_.get_value(1)-position_.get_value(2));
+    double teta13 = (position_.get_value(1)-position_.get_value(3));
+    double teta23 = (position_.get_value(2)-position_.get_value(3));
+    sortie.set_coord(1, -(masse2+masse3)*longueur*longueur2*vitesse_.get_value(2)*vitesse_.get_value(2)*sin(teta12)-masse3*longueur3*longueur*vitesse_.get_value(3)*vitesse_.get_value(3)*sin(teta13)-(masse+masse2+masse3)*9.81*longueur*sin(position_.get_value(1)));
+    sortie.set_coord(2, (masse2+masse3)*longueur*longueur2*vitesse_.get_value(1)*vitesse_.get_value(1)*sin(teta12)-masse3*longueur3*longueur2*vitesse_.get_value(3)*vitesse_.get_value(3)*sin(teta23)-(masse2+masse3)*9.81*longueur2*sin(position_.get_value(2)));
+    sortie.set_coord(3, masse3*longueur*longueur3*vitesse_.get_value(1)*vitesse_.get_value(1)*sin(teta13)+masse3*longueur3*longueur2*vitesse_.get_value(2)*vitesse_.get_value(2)*sin(teta23)-masse3*9.81*longueur3*sin(position_.get_value(3)));
+    return sortie;
 }
 

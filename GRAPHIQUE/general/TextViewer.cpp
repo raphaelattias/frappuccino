@@ -70,3 +70,7 @@ void TextViewer::dessineSupport(PendulesLiesRessort const& pr){
 void TextViewer::dessineSupport(Chariot const& chariot){
     std::cout << "slt";
 }
+
+void TextViewer::dessineSupport(PenduleTriple const& pdt){
+    std::cout << "slt";
+}

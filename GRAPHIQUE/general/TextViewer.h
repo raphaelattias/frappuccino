@@ -35,6 +35,7 @@ private:
     virtual void dessineSupport(PenduleRessort const& penduleressort) override;
     virtual void dessineSupport(Chariot const& penduleressort) override;
     virtual void dessineSupport(PendulesLiesRessort const& penduleressort) override;
+        virtual void dessineSupport(PenduleTriple const& penduleressort) override;
     void dessineOsc(Oscillateur const& oscillateur);
     string nom_de_fichier;
     ofstream fichier;

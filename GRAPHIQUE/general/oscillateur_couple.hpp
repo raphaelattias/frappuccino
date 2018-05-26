@@ -24,7 +24,6 @@ public:
     virtual Vecteur evolution(Vecteur const& position_ = {0,0,0}, Vecteur const& vitesse_ = {0, 0, 0}) const override;
     PenduleDouble(SupportADessin* SAD, Vecteur position1={0,0,0}, Vecteur vitesse1={0,0,0}, double masse1=0, double masse2=0, double longueur1=0, double longueur2=0, double coefFrottement1=0, double coefFrottement2=0);
 
-
     virtual void dessine(Integrateur* integrateur, int const& i) override;
     std::unique_ptr<Oscillateur> copie() const override;
 protected:
@@ -74,5 +73,19 @@ public:
     std::unique_ptr<Oscillateur> copie() const override;
     virtual Vecteur evolution(Vecteur const& position_ = {0,0,0}, Vecteur const& vitesse_ = {0, 0, 0}) const override;
     virtual void dessine(Integrateur* integrateur, int const& i) override;
+};
+
+class PenduleTriple: public OscillateursCouples{
+public:
+    virtual Vecteur evolution(Vecteur const& position_ = {0,0,0}, Vecteur const& vitesse_ = {0, 0, 0}) const override;
+    PenduleTriple(SupportADessin* SAD, Vecteur position1={0,0,0}, Vecteur vitesse1={0,0,0}, double masse1=0, double masse2=0, double masse3=0, double longueur1=0, double longueur2=0, double longueur3 = 0, double coefFrottement1=0, double coefFrottement2=0);
+    
+    virtual void dessine(Integrateur* integrateur, int const& i) override;
+    std::unique_ptr<Oscillateur> copie() const override;
+    double get_longueur3() const;
+protected:
+    std::unique_ptr<PenduleTriple> clone() const;
+    double longueur3;
+    double masse3;
 };
 

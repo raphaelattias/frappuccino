@@ -3,9 +3,6 @@
 #include "systeme.h"
 #include "pendule.h"
 #include "ressort.h"
-#include "qpainter.h"
-#include "qstring.h"
-#include <qcoreapplication.h>
 #include <cmath>
 
 // ======================================================================
@@ -251,8 +248,104 @@ void VueOpenGL::remettre_a_zero() {
   std::cout << "nada" << std::endl;
 } // je la mets pour que ca compile
 
+void VueOpenGL::dessineSupport(PenduleTriple const& a_dessiner){
+    QMatrix4x4 matrice;
+
+
+    double teta = a_dessiner.get_position().get_value(1);
+    teta = teta/a_dessiner.get_longueur();
+    double x = a_dessiner.get_longueur()*sin(teta);
+    double y = -a_dessiner.get_longueur()*cos(teta);
+    double angle;
+    angle = atan(x/y);
+
+
+    matrice.setToIdentity();
+    matrice.translate(x, y , 0.0);
+    matrice.rotate(angle, 0.0, 0.0, 1.0); // essayer de tourner le cube de sorte à ce qu'il soit perpendiculaire au fil
+    matrice.scale(0.10);
+
+    matrice.setToIdentity();
+    matrice.translate(x, y, 0.0);
+    matrice.scale(0.05);
+    dessineSphere(matrice, 1.0, 1.0, 1.0); // rouge
+
+
+    matrice.setToIdentity();
+
+    prog.setUniformValue("vue_modele", matrice_vue * matrice); //Ajouter fil , faire une méthode?
+
+    glBegin(GL_LINES);
+
+    prog.setAttributeValue(CouleurId, 1.0, 1.0, 1.0); // blanc aussi
+    prog.setAttributeValue(SommetId, 0.0, 0.0, 0.0);
+    prog.setAttributeValue(SommetId, x , y, 0.0);
+    glEnd();
+
+    double teta2 = a_dessiner.get_position().get_value(2);
+    teta2 = teta2/a_dessiner.get_longueur2();
+    double x2 = a_dessiner.get_longueur2()*sin(teta2);
+    double y2 = -a_dessiner.get_longueur2()*cos(teta2);
+    double angle2;
+    angle2 = atan(x2/y2);
+
+
+    matrice.setToIdentity();
+    matrice.translate(x+x2, y+y2 , 0.0);
+    matrice.rotate(angle2, 0.0, 0.0, 1.0); // essayer de tourner le cube de sorte à ce qu'il soit perpendiculaire au fil
+    matrice.scale(0.10);
+
+    matrice.setToIdentity();
+    matrice.translate(x+x2, y+y2, 0.0);
+    matrice.scale(0.05);
+    dessineSphere(matrice, 1.0, 1.0, 1.0); // rouge
+
+
+    matrice.setToIdentity();
+
+    prog.setUniformValue("vue_modele", matrice_vue * matrice); //Ajouter fil , faire une méthode?
+
+    glBegin(GL_LINES);
+
+    prog.setAttributeValue(CouleurId, 1.0, 1.0, 1.0); // blanc aussi
+    prog.setAttributeValue(SommetId, x, y, 0.0);
+    prog.setAttributeValue(SommetId, x2+x , y+y2, 0.0);
+    glEnd();
+
+    double teta3 = a_dessiner.get_position().get_value(3);
+    teta3 = teta3/a_dessiner.get_longueur3();
+    double x3 = a_dessiner.get_longueur3()*sin(teta3);
+    double y3 = -a_dessiner.get_longueur3()*cos(teta3);
+    double angle3;
+    angle2 = atan(x3/y3);
+
+
+    matrice.setToIdentity();
+    matrice.translate(x+x2+x3, y+y2+y3 , 0.0);
+    matrice.rotate(angle2, 0.0, 0.0, 1.0); // essayer de tourner le cube de sorte à ce qu'il soit perpendiculaire au fil
+    matrice.scale(0.10);
+
+    matrice.setToIdentity();
+    matrice.translate(x+x2+x3, y+y2+y3, 0.0);
+    matrice.scale(0.05);
+    dessineSphere(matrice, 1.0, 1.0, 1.0); // rouge
+
+
+    matrice.setToIdentity();
+
+    prog.setUniformValue("vue_modele", matrice_vue * matrice); //Ajouter fil , faire une méthode?
+
+    glBegin(GL_LINES);
+
+    prog.setAttributeValue(CouleurId, 1.0, 1.0, 1.0); // blanc aussi
+    prog.setAttributeValue(SommetId, x+x2, y+y2, 0.0);
+    prog.setAttributeValue(SommetId, x2+x+x3 , y+y2+y3, 0.0);
+    glEnd();
+}
 
 void VueOpenGL::dessineSupport(PenduleDouble const& a_dessiner){
+
+
     QMatrix4x4 matrice;
 
 

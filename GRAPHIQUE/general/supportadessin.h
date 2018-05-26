@@ -7,6 +7,7 @@ class PenduleDouble;
 class PenduleRessort;
 class Chariot;
 class PendulesLiesRessort;
+class PenduleTriple;
 
 class SupportADessin{
 public:
@@ -17,6 +18,7 @@ public:
     virtual void dessineSupport(PenduleRessort const&) = 0;
     virtual void dessineSupport(Chariot const&) = 0;
     virtual void dessineSupport(PendulesLiesRessort const&) = 0;
+    virtual void dessineSupport(PenduleTriple const&) = 0;
     
 
 public:
