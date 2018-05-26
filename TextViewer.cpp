@@ -56,8 +56,17 @@ void TextViewer::dessineSupport(Systeme const& systeme) {
 };
 
 void TextViewer::dessineSupport(PenduleDouble const& pd){
-    std::cout << pd.get_position().get_value(1) << "     " << pd.get_position2().get_value(1) << endl;
+    std::cout << pd.get_position().get_value(1) << "     " << pd.get_position().get_value(2) << endl;
 }
 
-    
+void TextViewer::dessineSupport(PenduleRessort const& pr){
+    std::cout << "slt";
+}
 
+void TextViewer::dessineSupport(PendulesLiesRessort const& pr){
+    std::cout << "slt";
+}
+
+void TextViewer::dessineSupport(Chariot const& chariot){
+    std::cout << "slt";
+}
