@@ -109,6 +109,7 @@ Revisite d'IntegrateurNewmark [problème]
 Modifications des méthodes dessineSupport()
 Modification de l'affichage QT (lignes horizontales, axes)
 Affichage graphique d'un système de pendules et de ressorts [réussi]
+Problème de sortie de fichier
 
 --------------------------------------------------
 ## Semaine 10 :
@@ -120,6 +121,7 @@ Affichage d'un pendule double [réussi en texte]
 Reviste de la méthode d'évolution de PenduleDouble
 Premiers essais avec gnuplot [problèmes]
 Nettoyage global du code
+Création d'un nouveau constructeur pour TextViewer
 
 --------------------------------------------------
 ## Semaine 11 :
