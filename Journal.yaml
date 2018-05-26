@@ -54,7 +54,7 @@ Prise en main de gnuplot [difficile]
 ## Semaine 5 :
 
 Création du fichier contenant les constantes
-Implémentation des classes Dessins, SupportADessin
+Implémentation des classes Dessinable, SupportADessin
 evolue() devient une méthode virtuelle
 Ajout de la méthode dessin() 
 Divers héritages entre classes
@@ -83,32 +83,63 @@ Corrections de bugs mineurs
 --------------------------------------------------
 ## Semaine 7 :
 
-
+Environnement QT avec l'exo_5
+Classe VecteurUnitaire [plus de problème]
+Divers tests d'affichage
+Méthode dessineSupport de TextViewer
+Modifications sur la classe Systeme (unique_ptr)
+Améliorations de la classe Systeme
+Affichage d'un système de pendules [bons]
 
 --------------------------------------------------
 ## Semaine 8 :
 
-
+Essai d'afficher un système sur QT [pas réussi]
+Implémentation de la classe IntegrateurNewmark
+Tests d'intégrateurs [problème avec Newmark]
+Revisite de la classe Ressort [plus de problème]
+Simulation d'un pendule sur QT [réussi]
+Amélioration de l'affichage (dessineSphere())
+Nouveau constructeur pour Oscillateur (avec support à dessin)
 
 --------------------------------------------------
 ## Semaine 9 :
 
-
+Revisite d'IntegrateurNewmark [problème]
+Modifications des méthodes dessineSupport()
+Modification de l'affichage QT (lignes horizontales, axes)
+Affichage graphique d'un système de pendules et de ressorts [réussi]
 
 --------------------------------------------------
 ## Semaine 10 :
 
-
+Implémentation de la classe OscillateursCouples
+Création de la classe PenduleDouble
+Héritage
+Affichage d'un pendule double [réussi en texte]
+Reviste de la méthode d'évolution de PenduleDouble
+Premiers essais avec gnuplot [problèmes]
+Nettoyage global du code
 
 --------------------------------------------------
 ## Semaine 11 :
 
+
+Affichage d'un pendule double sur QT [réussi]
+Amélioration de l'intégrateur de Newmark
+Divers tests sur les intégrateurs [excellents]
+Création des classes PenduleRessort, Chariot et PenduleLiesRessorts
+Affichage graphique de divers oscillateurs/oscillateurs couplés [bons]
+Implémentation de la classe IntegrateurRungeKutta
+Gnuplot [mieux]
+Divers tests sur les integrateurs [réussis]
+Création de la classe PenduleTriple [+ affichage]
+Makefiles
+Compilation du code sous Geany [pas de problème]
+Document sur les liens d'héritage
 
 
 --------------------------------------------------
 ## Semaine 12 :
 
 
-
---------------------------------------------------
-## Semaine 13 :
