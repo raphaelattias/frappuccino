@@ -21,6 +21,11 @@ class VueOpenGL : public SupportADessin {
   virtual void dessineSupport(Ressort const& a_dessiner) override;
   virtual void dessineSupport(Pendule const& a_dessiner) override;
   virtual void dessineSupport(PenduleDouble const& a_dessiner) override;
+  virtual void dessineSupport(PenduleRessort const& a_dessiner) override;
+  virtual void dessineSupport(Chariot const& a_dessiner) override;
+  virtual void dessineSupport(PendulesLiesRessort const& a_dessiner) override;
+
+
 
   // méthodes de (ré-)initialisation
   void init();

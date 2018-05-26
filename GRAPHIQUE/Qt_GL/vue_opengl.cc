@@ -22,7 +22,7 @@ void VueOpenGL::dessineSupport(Systeme const& a_dessiner)
 
   //dessineCube(matrice);
 
-
+/*
   //grille axe Z
   glBegin(GL_LINES);
   prog.setAttributeValue(CouleurId, 1.0, 1.0, 1.0); // blanc aussi
@@ -36,7 +36,8 @@ void VueOpenGL::dessineSupport(Systeme const& a_dessiner)
     prog.setAttributeValue(SommetId, i+1, -1, 10);
   }
 
-  glEnd();
+  glEnd();*/
+
 
 /*
   matrice.translate(-0.5, 0.0, -2.0);
@@ -341,6 +342,148 @@ void VueOpenGL::dessineSupport(Ressort const& a_dessiner){
 
 }
 
+void VueOpenGL::dessineSupport(const PenduleRessort &a_dessiner){
+    QMatrix4x4 matrice;
+    double angle = a_dessiner.get_position().get_value(1)/a_dessiner.get_position().norme();
+    double x = sin(angle)*a_dessiner.get_position().norme();
+    double y = -cos(angle)*a_dessiner.get_position().norme();
+
+
+    matrice.setToIdentity();
+    matrice.translate(x, y , 0.0);
+    matrice.scale(0.10);
+
+    matrice.setToIdentity();
+    matrice.translate(x, y, 0.0);
+    matrice.scale(0.05);
+    dessineSphere(matrice, 1.0, 1.0, 1.0); // rouge
+
+
+    matrice.setToIdentity();
+
+    prog.setUniformValue("vue_modele", matrice_vue * matrice); //Ajouter fil , faire une méthode?
+
+    glBegin(GL_LINES);
+
+    prog.setAttributeValue(CouleurId, 1.0, 1.0, 1.0); // blanc aussi
+    prog.setAttributeValue(SommetId, 0.0, 0.0, 0.0);
+    prog.setAttributeValue(SommetId, x , y, 0.0);
+    glEnd();
+}
+
+void VueOpenGL::dessineSupport(const Chariot &a_dessiner){
+    QMatrix4x4 matrice;
+    double x = a_dessiner.get_position().get_value(1);
+    double angle = a_dessiner.get_position().get_value(2)/a_dessiner.get_longueur();
+
+    matrice.setToIdentity();
+    matrice.translate(x, 0.0, 0.0);
+    matrice.scale(0.05);
+    dessineSphere(matrice, 1.0, 1.0, 1.0);
+
+    matrice.setToIdentity();
+
+    prog.setUniformValue("vue_modele", matrice_vue * matrice);
+
+    glBegin(GL_LINES);
+
+    prog.setAttributeValue(CouleurId, 0.5, 1.0, 1.0); // blanc aussi
+    prog.setAttributeValue(SommetId, 0.0, 0.0, 0.0);
+    prog.setAttributeValue(SommetId, x , 0.0, 0.0);
+    glEnd();
+
+
+
+    matrice.setToIdentity();
+    matrice.translate(x+a_dessiner.get_longueur()*sin(angle), -a_dessiner.get_longueur()*cos(angle), 0.0);
+    matrice.scale(0.05);
+    dessineSphere(matrice, 1.0, 1.0, 1.0);
+
+    matrice.setToIdentity();
+    prog.setUniformValue("vue_modele", matrice_vue * matrice); //Ajouter fil , faire une méthode?
+
+    glBegin(GL_LINES);
+    prog.setAttributeValue(CouleurId, 1.0, 1.0, 1.0); // blanc aussi
+    prog.setAttributeValue(SommetId, x, 0.0, 0.0);
+    prog.setAttributeValue(SommetId, x+a_dessiner.get_longueur()*sin(angle), -a_dessiner.get_longueur()*cos(angle), 0.0);
+    glEnd();
+
+    matrice.setToIdentity();
+}
+
+void VueOpenGL::dessineSupport(PendulesLiesRessort const& a_dessiner){
+    QMatrix4x4 matrice;
+    double teta = a_dessiner.get_position().get_value(1);
+    teta = teta/a_dessiner.get_longueur();
+    double x = a_dessiner.get_longueur()*sin(teta);
+    double y = -a_dessiner.get_longueur()*cos(teta);
+    double angle;
+    angle = atan(x/y);
+
+    double teta2 = a_dessiner.get_position().get_value(2);
+    teta2 = teta2/a_dessiner.get_longueur2();
+    double x2 = a_dessiner.get_longueur2()*sin(teta2);
+    double y2 = -a_dessiner.get_longueur2()*cos(teta2);
+    double angle2;
+    angle2 = atan(x2/y2);
+
+    double d = a_dessiner.get_d();
+
+    matrice.setToIdentity();
+    matrice.translate(x+0.5*d, y, 0.0);
+    matrice.scale(0.05);
+    dessineSphere(matrice, 1.0, 1.0, 1.0);
+
+    matrice.setToIdentity();
+    prog.setUniformValue("vue_modele", matrice_vue * matrice); //Ajouter fil , faire une méthode?
+
+    glBegin(GL_LINES);
+
+    prog.setAttributeValue(CouleurId, 1.0, 1.0, 1.0); // blanc aussi
+    prog.setAttributeValue(SommetId, 0.5*d, 0.0, 0.0);
+    prog.setAttributeValue(SommetId, x+0.5*d, y, 0.0);
+    glEnd();
+
+
+    matrice.setToIdentity();
+    matrice.translate(-x2-0.5*d, y2, 0.0);
+    matrice.scale(0.05);
+    dessineSphere(matrice, 1.0, 1.0, 1.0);
+    matrice.setToIdentity();
+
+    prog.setUniformValue("vue_modele", matrice_vue * matrice); //Ajouter fil , faire une méthode?
+
+    glBegin(GL_LINES);
+
+    prog.setAttributeValue(CouleurId, 1.0, 1.0, 1.0); // blanc aussi
+    prog.setAttributeValue(SommetId, -0.5*d, 0.0, 0.0);
+    prog.setAttributeValue(SommetId, -x2-0.5*d, y2, 0.0);
+    glEnd();
+
+
+    matrice.setToIdentity();
+    matrice.translate(a_dessiner.get_a1()*sin(teta)+0.5*d, -a_dessiner.get_a1()*cos(teta), 0.0);
+    matrice.scale(0.05);
+    dessineSphere(matrice, 1.0, 0.8, 1.0);
+
+    matrice.setToIdentity();
+    matrice.translate(-a_dessiner.get_a1()*sin(teta2)-0.5*d, -a_dessiner.get_a1()*cos(teta2), 0.0);
+    matrice.scale(0.05);
+    dessineSphere(matrice, 1.0, 0.8, 1.0);
+
+    matrice.setToIdentity();
+
+    prog.setUniformValue("vue_modele", matrice_vue * matrice); //Ajouter fil , faire une méthode?
+
+    glBegin(GL_LINES);
+
+    prog.setAttributeValue(CouleurId, 1.0, 0.8, 1.0); // blanc aussi
+    prog.setAttributeValue(SommetId, a_dessiner.get_a1()*sin(teta)+0.5*d, -a_dessiner.get_a1()*cos(teta), 0.0);
+    prog.setAttributeValue(SommetId, -a_dessiner.get_a1()*sin(teta2)-0.5*d, -a_dessiner.get_a1()*cos(teta2), 0.0);
+    glEnd();
+
+}
+
 
 void VueOpenGL::dessineSupport(Pendule const& a_dessiner){
 
@@ -382,6 +525,11 @@ void VueOpenGL::dessineSupport(Pendule const& a_dessiner){
       matrice.scale(0.05);
       dessineSphere(matrice, 0, 1,0);
 
+      matrice.setToIdentity();
+      prog.setAttributeValue(CouleurId, 1.0, 1.0,1.0);
+
 }
+
+
 
 // Je la mets pour que ca compile
