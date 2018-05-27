@@ -14,7 +14,7 @@ protected:
     Vecteur_unitaire unitaireB;
     
 public:
-    OscillateursCouples(SupportADessin* SAD, Vecteur position1={0,0,0}, Vecteur vitesse1={0,0,0}, double masse1=0, double masse2=0, double longueur1=0, double longueur2=0, double coefFrottement1=0, double coefFrottement2=0);
+    OscillateursCouples(SupportADessin* SAD, Vecteur position1={0,0,0}, Vecteur vitesse1={0,0,0}, Vecteur origine={0,0,0}, double masse1=0, double masse2=0, double longueur1=0, double longueur2=0, double coefFrottement1=0, double coefFrottement2=0);
     
     double get_longueur2() const;
 };
@@ -22,9 +22,9 @@ public:
 class PenduleDouble: public OscillateursCouples {
 public:
     virtual Vecteur evolution(Vecteur const& position_ = {0,0,0}, Vecteur const& vitesse_ = {0, 0, 0}) const override;
-    PenduleDouble(SupportADessin* SAD, Vecteur position1={0,0,0}, Vecteur vitesse1={0,0,0}, double masse1=0, double masse2=0, double longueur1=0, double longueur2=0, double coefFrottement1=0, double coefFrottement2=0);
+    PenduleDouble(SupportADessin* SAD, Vecteur position1={0,0,0}, Vecteur vitesse1={0,0,0},Vecteur origine={0,0,0}, double masse1=0, double masse2=0, double longueur1=0, double longueur2=0, double coefFrottement1=0, double coefFrottement2=0);
 
-    virtual void dessine(Integrateur* integrateur, int const& i) override;
+    virtual void dessine(Integrateur* integrateur = nullptr, double const& dt = 0.01, int const& i = 1) override;
     std::unique_ptr<Oscillateur> copie() const override;
 protected:
     std::unique_ptr<PenduleDouble> clone() const;
@@ -37,9 +37,9 @@ protected:
 public:
     std::unique_ptr<Oscillateur> copie() const override;
     virtual Vecteur evolution(Vecteur const& position_ = {0,0,0}, Vecteur const& vitesse_ = {0, 0, 0}) const override;
-    virtual void dessine(Integrateur* integrateur, int const& i) override;
+    virtual void dessine(Integrateur* integrateur = nullptr, double const& dt = 0.01, int const& i = 1) override;
     
-    PenduleRessort(SupportADessin* SAD, Vecteur position1={0,0,0}, Vecteur vitesse1={0,0,0}, double masse1=0, double masse2=0, double longueur1=0, double longueur2=0, double coefFrottement1=0, double coefFrottement2=0, double raideur1 = 0);
+    PenduleRessort(SupportADessin* SAD, Vecteur position1={0,0,0}, Vecteur vitesse1={0,0,0}, Vecteur origine={0,0,0},double masse1=0, double masse2=0, double longueur1=0, double longueur2=0, double coefFrottement1=0, double coefFrottement2=0, double raideur1 = 0);
     
 };
 
@@ -49,9 +49,9 @@ protected:
     std::unique_ptr<Chariot> clone() const;
 public:
     std::unique_ptr<Oscillateur> copie() const override;
-    Chariot(SupportADessin* SAD, Vecteur position1={0,0,0}, Vecteur vitesse1={0,0,0}, double masse1=0, double masse2=0, double longueur1=0, double longueur2=0, double coefFrottement1=0, double coefFrottement2=0, double raideur1 = 0);
+    Chariot(SupportADessin* SAD, Vecteur position1={0,0,0}, Vecteur vitesse1={0,0,0},Vecteur origine={0,0,0}, double masse1=0, double masse2=0, double longueur1=0, double longueur2=0, double coefFrottement1=0, double coefFrottement2=0, double raideur1 = 0);
     virtual Vecteur evolution(Vecteur const& position_ = {0,0,0}, Vecteur const& vitesse_ = {0, 0, 0}) const override;
-    virtual void dessine(Integrateur* integrateur, int const& i) override;
+    virtual void dessine(Integrateur* integrateur = nullptr, double const& dt = 0.01, int const& i = 1) override;
 };
 
 class PendulesLiesRessort: public OscillateursCouples{
@@ -68,19 +68,19 @@ public:
     double get_a1() const;
     double get_a2() const;
 
-    PendulesLiesRessort(SupportADessin* SAD, Vecteur position1={0,0,0}, Vecteur vitesse1={0,0,0}, double masse1=0, double masse2=0, double longueur1=0, double longueur2=0, double coefFrottement1=0, double coefFrottement2=0, double raideur1 = 0, double a1 = 0, double a2 = 0, double d = 0);
+    PendulesLiesRessort(SupportADessin* SAD, Vecteur position1={0,0,0}, Vecteur vitesse1={0,0,0}, Vecteur origine={0,0,0},double masse1=0, double masse2=0, double longueur1=0, double longueur2=0, double coefFrottement1=0, double coefFrottement2=0, double raideur1 = 0, double a1 = 0, double a2 = 0, double d = 0);
     
     std::unique_ptr<Oscillateur> copie() const override;
     virtual Vecteur evolution(Vecteur const& position_ = {0,0,0}, Vecteur const& vitesse_ = {0, 0, 0}) const override;
-    virtual void dessine(Integrateur* integrateur, int const& i) override;
+    virtual void dessine(Integrateur* integrateur = nullptr, double const& dt = 0.01, int const& i = 1) override;
 };
 
 class PenduleTriple: public OscillateursCouples{
 public:
     virtual Vecteur evolution(Vecteur const& position_ = {0,0,0}, Vecteur const& vitesse_ = {0, 0, 0}) const override;
-    PenduleTriple(SupportADessin* SAD, Vecteur position1={0,0,0}, Vecteur vitesse1={0,0,0}, double masse1=0, double masse2=0, double masse3=0, double longueur1=0, double longueur2=0, double longueur3 = 0, double coefFrottement1=0, double coefFrottement2=0);
+    PenduleTriple(SupportADessin* SAD, Vecteur position1={0,0,0}, Vecteur vitesse1={0,0,0}, Vecteur origine={0,0,0}, double masse1=0, double masse2=0, double masse3=0, double longueur1=0, double longueur2=0, double longueur3 = 0, double coefFrottement1=0, double coefFrottement2=0);
     
-    virtual void dessine(Integrateur* integrateur, int const& i) override;
+    virtual void dessine(Integrateur* integrateur = nullptr, double const& dt = 0.01, int const& i = 1) override;
     std::unique_ptr<Oscillateur> copie() const override;
     double get_longueur3() const;
 protected:

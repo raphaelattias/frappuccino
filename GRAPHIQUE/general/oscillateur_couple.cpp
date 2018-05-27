@@ -8,12 +8,12 @@
 
 #include "oscillateur_couple.hpp"
 #include "oscillateur.h"
-#include "vecteur.h"
 #include <cmath>
 #include "constantes.h"
+#include "vecteur.h"
 #include "integrateur.h"
 
-OscillateursCouples::OscillateursCouples(SupportADessin* SAD, Vecteur position1, Vecteur vitesse1, double masse1, double masse2, double longueur1, double longueur2, double coefFrottement1, double coefFrottement2): Oscillateur(SAD, position1, vitesse1, masse1, longueur1, coefFrottement1), longueur2(longueur2), masse2(masse2), coefFrottement2(coefFrottement2){};
+OscillateursCouples::OscillateursCouples(SupportADessin* SAD, Vecteur position1, Vecteur vitesse1, Vecteur origine, double masse1, double masse2, double longueur1, double longueur2, double coefFrottement1, double coefFrottement2): Oscillateur(SAD, position1, vitesse1, origine, masse1, longueur1, coefFrottement1), longueur2(longueur2), masse2(masse2), coefFrottement2(coefFrottement2){};
 
 Vecteur PenduleDouble::evolution(Vecteur const& position_, Vecteur const& vitesse_) const {
     double dteta = position_.get_value(1)-position_.get_value(2);
@@ -64,54 +64,53 @@ std::unique_ptr<Oscillateur> PendulesLiesRessort::copie() const{
 }
 
 
-void PenduleDouble::dessine(Integrateur* integrateur, int const& i){
+void PenduleDouble::dessine(Integrateur* integrateur, double const& dt, int const& i){
     for(int j = 0; j < i; j++){
         support->dessineSupport(*this);
-        if(integrateur != nullptr){
-          integrateur->integrer(*this);
-        }
-    }
-}
-
-void PenduleRessort::dessine(Integrateur* integrateur, int const& i){
-    for(int j = 0; j < i; j++){
-        support->dessineSupport(*this);
-        if(integrateur != nullptr){
-          integrateur->integrer(*this);
-        }
-    }
-}
-
-void Chariot::dessine(Integrateur* integrateur, int const& i){
-    for(int j = 0; j < i; j++){
-        support->dessineSupport(*this);
-        if(integrateur != nullptr){
-            integrateur->integrer(*this);
+        if(integrateur != nullptr && ((i > 0) && (dt > 0))){
+            integrateur->integrer(*this, dt);
         }
     }
 }
 
 
-void PendulesLiesRessort::dessine(Integrateur* integrateur, int const& i){
+void PenduleRessort::dessine(Integrateur* integrateur, double const& dt, int const& i){
     for(int j = 0; j < i; j++){
         support->dessineSupport(*this);
-        if(integrateur != nullptr){
-            integrateur->integrer(*this);
+        if(integrateur != nullptr && ((i > 0) && (dt > 0))){
+            integrateur->integrer(*this, dt);
         }
     }
 }
 
-void PenduleTriple::dessine(Integrateur* integrateur, int const& i){
+void Chariot::dessine(Integrateur* integrateur, double const& dt, int const& i){
     for(int j = 0; j < i; j++){
         support->dessineSupport(*this);
-        if(integrateur != nullptr){
-            integrateur->integrer(*this);
+        if(integrateur != nullptr && ((i > 0) && (dt > 0))){
+            integrateur->integrer(*this, dt);
         }
     }
 }
 
 
-PenduleDouble::PenduleDouble(SupportADessin* SAD, Vecteur position1, Vecteur vitesse1, double masse1, double masse2, double longueur1, double longueur2, double coefFrottement1, double coefFrottement2): OscillateursCouples(SAD, position1, vitesse1, masse1, masse2, longueur1, longueur2, coefFrottement1, coefFrottement2){};
+void PendulesLiesRessort::dessine(Integrateur* integrateur, double const& dt, int const& i){
+    for(int j = 0; j < i; j++){
+        support->dessineSupport(*this);
+        if(integrateur != nullptr && ((i > 0) && (dt > 0))){
+            integrateur->integrer(*this, dt);
+        }
+    }
+}
+void PenduleTriple::dessine(Integrateur* integrateur, double const& dt, int const& i){
+    for(int j = 0; j < i; j++){
+        support->dessineSupport(*this);
+        if(integrateur != nullptr && ((i > 0) && (dt > 0))){
+            integrateur->integrer(*this, dt);
+        }
+    }
+}
+
+PenduleDouble::PenduleDouble(SupportADessin* SAD, Vecteur position1, Vecteur vitesse1,  Vecteur origine, double masse1, double masse2, double longueur1, double longueur2, double coefFrottement1, double coefFrottement2): OscillateursCouples(SAD, position1, vitesse1,origine, masse1, masse2, longueur1, longueur2, coefFrottement1, coefFrottement2){};
 
 double OscillateursCouples::get_longueur2() const{
     return longueur2;
@@ -122,9 +121,9 @@ Vecteur PenduleRessort::evolution(Vecteur const& position_, Vecteur const& vites
     return (g_-position_*(raideur1/masse)*(1-longueur/position_.norme()));
 }
 
-PenduleRessort::PenduleRessort(SupportADessin* SAD, Vecteur position1, Vecteur vitesse1, double masse1, double masse2, double longueur1, double longueur2, double coefFrottement1, double coefFrottement2, double raideur1): OscillateursCouples(SAD, position1, vitesse1, masse1, masse2, longueur1, longueur2, coefFrottement1, coefFrottement2), raideur1(raideur1){};
+PenduleRessort::PenduleRessort(SupportADessin* SAD, Vecteur position1, Vecteur vitesse1, Vecteur origine, double masse1, double masse2, double longueur1, double longueur2, double coefFrottement1, double coefFrottement2, double raideur1): OscillateursCouples(SAD, position1, vitesse1, origine, masse1, masse2, longueur1, longueur2, coefFrottement1, coefFrottement2), raideur1(raideur1){};
 
-Chariot::Chariot(SupportADessin* SAD, Vecteur position1, Vecteur vitesse1, double masse1, double masse2, double longueur1, double longueur2, double coefFrottement1, double coefFrottement2, double raideur1): OscillateursCouples(SAD, position1, vitesse1, masse1, masse2, longueur1, longueur2, coefFrottement1, coefFrottement2), raideur1(raideur1){};
+Chariot::Chariot(SupportADessin* SAD, Vecteur position1, Vecteur vitesse1,  Vecteur origine,double masse1, double masse2, double longueur1, double longueur2, double coefFrottement1, double coefFrottement2, double raideur1): OscillateursCouples(SAD, position1, vitesse1,origine, masse1, masse2, longueur1, longueur2, coefFrottement1, coefFrottement2), raideur1(raideur1){};
 
 
 Vecteur Chariot::evolution(Vecteur const& position_, Vecteur const& vitesse_) const {
@@ -141,13 +140,13 @@ Vecteur Chariot::evolution(Vecteur const& position_, Vecteur const& vitesse_) co
 
 Vecteur PendulesLiesRessort::evolution(Vecteur const& position_, Vecteur const& vitesse_) const {
     Vecteur sortie(0, 0, 0);
-    double L = pow(a1*a1 + a2*a2 + d*d -2*a1*sin(position_.get_value(1))+ 2*a2*sin(position_.get_value(2))-2*a1*a2*cos(position_.get_value(2)-position_.get_value(1)), 0.5);
-    sortie.set_coord(1, (raideur1*a1*((L-d)/L)*(d*cos(position_.get_value(1))+a2*sin(position_.get_value(2)-position_.get_value(1)))-masse*9.81*longueur*sin(position_.get_value(1)))/(masse*longueur*longueur));
-    sortie.set_coord(2, (raideur1*a2*((L-d)/L)*(d*cos(position_.get_value(2))+a1*sin(position_.get_value(2)-position_.get_value(1)))-masse2*9.81*longueur2*sin(position_.get_value(2)))/(masse2*longueur2*longueur2));
+    double L = pow(a1*a1 + a2*a2 + d*d -2*a1*sin(position_.get_value(1))+ 2*a2*sin(position_.get_value(2))+2*a1*a2*cos(position_.get_value(2)-position_.get_value(1)), 0.5);
+    sortie.set_coord(1, (-raideur1*a1*((L-d)/L)*(d*cos(position_.get_value(1))-a2*sin(position_.get_value(2)-position_.get_value(1)))-masse*9.81*longueur*sin(position_.get_value(1)))/(masse*longueur*longueur));
+    sortie.set_coord(2, (-raideur1*a2*((L-d)/L)*(d*cos(position_.get_value(2))+a1*sin(position_.get_value(2)-position_.get_value(1)))-masse2*9.81*longueur2*sin(position_.get_value(2)))/(masse2*longueur2*longueur2));
     return sortie;
 }
 
-PendulesLiesRessort::PendulesLiesRessort(SupportADessin* SAD, Vecteur position1, Vecteur vitesse1, double masse1, double masse2, double longueur1, double longueur2, double coefFrottement1, double coefFrottement2, double raideur1, double a1, double a2, double d): OscillateursCouples(SAD, position1, vitesse1, masse1, masse2, longueur1, longueur2, coefFrottement1, coefFrottement2), a1(a1), a2(a2), d(d), raideur1(raideur1){};
+PendulesLiesRessort::PendulesLiesRessort(SupportADessin* SAD, Vecteur position1, Vecteur vitesse1, Vecteur origine, double masse1, double masse2, double longueur1, double longueur2, double coefFrottement1, double coefFrottement2, double raideur1, double a1, double a2, double d): OscillateursCouples(SAD, position1, vitesse1, origine, masse1, masse2, longueur1, longueur2, coefFrottement1, coefFrottement2), a1(a1), a2(a2), d(d), raideur1(raideur1){};
 
 
 double PendulesLiesRessort::get_d() const {
@@ -168,7 +167,7 @@ double PenduleTriple::get_longueur3() const {
     return longueur3;
 }
 
-PenduleTriple::PenduleTriple(SupportADessin* SAD, Vecteur position1, Vecteur vitesse1, double masse1, double masse2,double masse3, double longueur1, double longueur2, double longueur3, double coefFrottement1, double coefFrottement2): OscillateursCouples(SAD, position1, vitesse1, masse1, masse2, longueur1, longueur2, coefFrottement1, coefFrottement2), masse3(masse3), longueur3(longueur3){};
+PenduleTriple::PenduleTriple(SupportADessin* SAD, Vecteur position1, Vecteur vitesse1, Vecteur origine, double masse1, double masse2,double masse3, double longueur1, double longueur2, double longueur3, double coefFrottement1, double coefFrottement2): OscillateursCouples(SAD, position1, vitesse1, origine, masse1, masse2, longueur1, longueur2, coefFrottement1, coefFrottement2), masse3(masse3), longueur3(longueur3){};
 
 Vecteur PenduleTriple::evolution(Vecteur const& position_, Vecteur const& vitesse_) const {
     Vecteur sortie(0, 0, 0);

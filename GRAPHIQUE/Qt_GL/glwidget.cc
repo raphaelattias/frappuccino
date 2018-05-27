@@ -39,7 +39,8 @@ void GLWidget::resizeGL(int width, int height)
 void GLWidget::paintGL()
 {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  s.dessine(&I1, 1);
+  s.dessine(&I1, dt, 1);
+
 }
 
 
@@ -122,8 +123,7 @@ void GLWidget::timerEvent(QTimerEvent* event)
 {
   Q_UNUSED(event);
 
-  double dt = chronometre.restart() / 1000.0;
-
+  dt = chronometre.restart() / 1400.0;
   update();
 }
 

@@ -38,12 +38,13 @@ private:
         virtual void dessineSupport(PenduleTriple const& penduleressort) override;
     void dessineOsc(Oscillateur const& oscillateur);
     string nom_de_fichier;
+
     ofstream fichier;
 
-    
+    void ajouter(string const& txt);
+
+    double i;
 };
-
-
 
 
 #endif /* TextViewer_h */

@@ -15,9 +15,9 @@ using namespace std;
 
 class Systeme : public Dessinable {
 public:
-    virtual void dessine(Integrateur* integrateur = nullptr, int const& i = 1) override;
+    virtual void dessine(Integrateur* integrateur = nullptr, double const& dt = 0, int const& i = 0) override;
     void ajouter(Oscillateur const& oscillateur);
-    void evolue(Integrateur& I1, int const& pas_de_temps = 1);
+    void evolue(Integrateur& I1, int const& pas_de_temps = 0.01);
     double get_size() const;
     ostream& afficher(ostream& sortie) const;
     

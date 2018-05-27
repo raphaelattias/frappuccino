@@ -12,20 +12,18 @@
 #include "integrateurEulerCromer.h"
 #include "TextViewer.h"
 #include "systeme.h"
+#include <cmath>
 using namespace std;
-
 
 int main(){
     TextViewer vue("petit test.txt");
     IntegrateurEulerCromer I1;
-    Systeme S1;
+
+
+    PendulesLiesRessort c(&vue, {1,1}, {0, 0}, {0,0, 0}, 1, 1, 1, 0.8, 0, 0, 50, 0.5, 0.5, 2);
+
+    c.dessine(&I1, 0.01, 100);
     
-    PenduleDouble P(&vue, {1,1,0}, {1,1,0}, 1, 1, 1, 1, 0, 0);
-    S1.ajouter(P);
-    S1.assignerSupport(vue);
-    for(int i=0; i < 100; i++){
-        S1.dessine(&I1, 1);
-    }
 
     return 0;
 }
