@@ -23,5 +23,3 @@ void Dessinable::assignerSupport(SupportADessin& SAD){
     this->support = &SAD;
 }
     
-void Dessinable::dessine(Integrateur* integrateur, int const& i){};
-

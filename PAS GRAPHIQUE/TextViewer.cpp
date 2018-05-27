@@ -20,6 +20,7 @@
 using namespace std;
 
 TextViewer::TextViewer(string nom_de_fichier): nom_de_fichier(nom_de_fichier){
+    i = 0;
     fichier.open(nom_de_fichier, fstream::trunc);
 }
 
@@ -56,21 +57,27 @@ void TextViewer::dessineSupport(Systeme const& systeme) {
 };
 
 void TextViewer::dessineSupport(PenduleDouble const& pd){
-    std::cout << pd.get_position().get_value(1) << "     " << pd.get_position().get_value(2) << endl;
+    dessineOsc(pd);
 }
 
 void TextViewer::dessineSupport(PenduleRessort const& pr){
-    std::cout << "slt";
+    dessineOsc(pr);
 }
 
 void TextViewer::dessineSupport(PendulesLiesRessort const& pr){
-    std::cout << "slt";
+    dessineOsc(pr);
 }
 
 void TextViewer::dessineSupport(Chariot const& chariot){
-    std::cout << "slt";
+    dessineOsc(chariot);
 }
 
 void TextViewer::dessineSupport(PenduleTriple const& pdt){
-    std::cout << "slt";
+    dessineOsc(pdt);
 }
+
+void TextViewer::ajouter(string const& txt){
+    fichier << txt;
+
+}
+

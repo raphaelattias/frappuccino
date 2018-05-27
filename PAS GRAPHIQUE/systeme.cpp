@@ -25,10 +25,10 @@
     
 
 
-void Systeme::dessine(Integrateur* integrateur, int const& i){
+void Systeme::dessine(Integrateur* integrateur, double const& dt, int const& i){
     support->dessineSupport(*this);
         for(int j(0); j < collection.size(); j++){
-            collection[j]->dessine(integrateur, i);
+            collection[j]->dessine(integrateur, dt, i);
         }
 }
 
@@ -44,7 +44,7 @@ void Systeme::dessine(Integrateur* integrateur, int const& i){
     
     void Systeme::evolue(Integrateur& I1, int const& pas_de_temps){
         for(int i=0; i < collection.size(); i++){
-            I1.integrer(*collection[i]);
+            I1.integrer(*collection[i], pas_de_temps);
         }
     }
 
