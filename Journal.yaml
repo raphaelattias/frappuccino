@@ -10,138 +10,121 @@ EPFL MABA2 - 2018
 
 ## Semaine 1 :
 
-Création de la classe Vecteur
-Réalisations de tous les tests [bons]
-Première approche avec QT, compréhension du logiciel
-Lecture du complément mathématique
-Débugger
+Nous avons créé la classe Vecteur avec tous les opérateurs demandés. Nous avons également choisi de faire le plongement naturel
+pour traiter deux vecteurs de dimensiosn différentes, pour éviter la perte d'information. Des tests ont été effectués pour 
+vérifier que toutes les méthodes et opérateurs fonctionnaient correctement. Pascal a commencé à voir les exercices sur Qt pour
+une futur interface graphique. Le complément mathématique a été lu et a été utile pour vérifier l'implémentation recherchée,
+notamment avec des méthodes .get_value() et .prod_scalaire().  Nous avons aussi passé du temps à débugger les erreurs lors
+de l'implémentation du plongement naturel. Nous n'avons pas mis de constructeur de copie car le constructeur de copie par défaut
+remplie bien la tâche pour la copie de deux attributs de Vecteur (dimension et vector<double>).
 
 --------------------------------------------------
 
 ## Semaine 2 :
 
-Paufinement de la classe Vecteur (messages d'erreurs)
-Création du MakeFile
-Fichiers .h et .cpp 
-Ouverture d'un Github pour faciliter la transmission de fichier
+La classe Vecteur a été améliorée en traitant les erreurs, notamment quand on souhaite changer la n+1 -ème variable d'un Vecteur
+à n coordonnées. Nous avons aussi surchargé l'opérateur '!=' en utilisant l'opérateur '==' implémenté la semaine 1. Le MakeFile
+a été débuté et nous comprenons maintenant le MakeFile sera créé le long du projet. Le projet est maintenant modularisé à
+travers des fichiers .h et .cpp. Nous avons également ouvert un GitHub privé pour faciliter le partage des fichiers, écrire des
+commentaires et garder un historique des modifications.
 
 --------------------------------------------------
 ## Semaine 3 :
 
-Création des constructeurs pour la classe Vecteur
-Surcharge de tous les opérateurs pour les opérations
-entre vecteurs
-Surcharge de l'operateur d'affichage
-Modification de la méthode affiche()
-Création de la classe Oscillateur
-Lecture du complément mathématique
-Réalisation des tests [bons]
+Nous avons ajouté trois constructeurs à la classe Vecteur, et grâce à l'aide de l'assistant nous avons fait un constructeur qui
+prend une liste en argument. De cette manière on peut initialiser un vecteur à N dimensions. On a aussi fait les derniers
+opérateurs qui manquaient (produit vectoriel). Nous avons fait la surchage de l'opérateur '<<' pour afficher un vecteur dans
+un cout traditionnel. Nous avons aussi commencé la classe Oscillateur qui marche pour une chute libre. Les résultats affichés
+représentent correctement la trajectoire d'un lancé (une parabole). Les méthodes implémentées dans Vecteur se sont révélées utiles.
+Nous avons également relu le complément mathématiques pour visualiser les attributs attendus et les futures démarches à prendre.
 
 --------------------------------------------------
 ## Semaine 4 :
 
-Suppression de l'attribut dimension de la classe Vecteur
-Implémentation de la classe Intégrateur
-Héritage entre IntégrateurEC et Intégrateur
-Création de la classe Pendule
-Héritage entres oscillateurs
-Essai de "partager" la fonction evolue() entre plusieurs classes
-Réalisation de divers tests [bons]
-Refonte de la surcharge des opérateurs (const&)
-Prise en main de gnuplot [difficile]
+Nous avons décidé de supprimer l'attribut dimension de la classe Vecteur qui en fin de compte n'est pas utile à la classe Vecteur.
+La classe Intégrateur a été débutée et nous avons passé du temps à comprendre les techniques d'intégrations attendues dans le
+complément mathématiques. L'intégrateur Euler Cromer nous a paru le plus compréhensible et nous a aidé à comprendre la classe
+Intégrateur. Nous en avons déduit que chaque intégrateur et chaque pendule devait avoir sa propre technique d'intégration et 
+Vecteur d'évolution respectivement. L'assistant nous a expliqué que cela s'éclaircirait avec l'héritage et les méthodes virtuelles.
+En attendant nous avons créé Pendule comme étant une classe indépendante de Oscillateur et les testes montrent qu'avec l'
+intégrateur Euler Cromer les résultats sont sensiblement les memes qu'un vrai pendule, càd une oscillation. Nous avons également
+ajouté une constante globale pour le vecteur g. Pascal a essayé d'utiliser gnuplot mais l'utilisation reste difficile.
 
 --------------------------------------------------
 ## Semaine 5 :
 
-Création du fichier contenant les constantes
-Implémentation des classes Dessinable, SupportADessin
-evolue() devient une méthode virtuelle
-Ajout de la méthode dessin() 
-Divers héritages entre classes
-Polymorphisme
-Problème avec la fonction evolue()
-Divers tests effectués [mauvais]
-Refonte de diverses méthodes (const&)
-Oscillateur devient une classe virtuelle
+Nous avons ajouté une constante globale pour le vecteur g. Pour l'instant nous avons du mal à comprendre les erlations entre Dessinable
+et support à Dessin, toutefois nous avons implémenté les deux classes comme demandé. Evolue() est devenue une méthode virtuelle pure
+qui peut être modifiée en fonction de l'oscillateur. Nous avons écrit et adapté les classes en fonction des liens d'héritage, avec
+Dessinnable étant la super classe de tous les oscillateurs et de système. La classe système a été crée avec un tableau de pointeurs
+sur des oscillateurs. Les pointeurs permettant d'utiliser le polymorphisme des classes d'oscillateurs. Système est également
+un dessinable. Nous avons corrigé des anciennes méthodes qui n'avaient pas de const& et Oscillateur est maintenant une classe abstraite.
+Nous n'avons pas encore fait la première simulation texte.
 
 --------------------------------------------------
 ## Semaine 6 :
 
-Création de la classe Systeme (plusieurs problèmes)
-Polymorphisme
-Héritage
-Création de la classe Ressort
-Modification de la fonction evolue() (const override)
-Divers tests effectués[moyens] 
-(Ressort ne se comporte pas correctement)
-Implémentation de la classe TextViewer
-Création de la classe VecteurUnitaire [problème]
-Lecture du fichier sur le graphisme
-Premier bilan avec assistant
-Corrections de bugs mineurs
+Nous avons ajouté des méthodes à la classe système pour afficher sur un ostream& tous les éléments de la collection. Toutefois nous
+avons des problèmes avec la méhtode dessine et son implémentation. Nous avons créé la classe ressort qui EST un oscillateur et 
+a des attributs supplémentaires, comme la raideur. Il possède sa propre fonction d'évolution. Toutefois nous observons un
+léger décallage entre les résultats calculés et les résultats attendus. Nous avons implémenté la classe TextViewer qui est un 
+support à dessin. Comme le Ressort à besoin d'un vecteur directeur unitaire nous avons implémenté la classe Vecteur Unitaire
+qui EST un Vecteur, avec des méthodes normaliser. Nous avons fait le premier bilan avec l'assistant et semble être positif. Nous
+avons lu les exemples sur le graphisme pour comprendre l'évolution d'un cube dans le support à dessin VueOpenGL. Nous avons
+également compris que "contenu" serait dans VuOpenGL un système.
 
 --------------------------------------------------
 ## Semaine 7 :
 
-Environnement QT avec l'exo_5
-Classe VecteurUnitaire [plus de problème]
-Divers tests d'affichage
-Méthode dessineSupport de TextViewer
-Modifications sur la classe Systeme (unique_ptr)
-Améliorations de la classe Systeme
-Affichage d'un système de pendules [bons]
+Nous étudions l'exo 5 de QT pour faire le lien avec notre projet. Pour l'instant nous avons compris que QTWidget possède une méthode
+pour faire évoluer l'objet et une méthode pour "rafraichir" l'affichage. Nous avons corrigé les derniers problèmes avec la classe
+Vecteur Unitaire. Nous expérimentons les affichages sur TextViewer pour faire sortir les informations sur un fichier externe,
+tout en pensant à remettre à zéro le fichier de sortie à chaque nouvelle compilation du projet. L'option "fstream::trunc" semble
+etre adaptée mais nous n'obtenons toujours pas le résultat voulu. Nous avons ajouté les méthodes TextiViewer::dessineSupport
+pour chaqu'un des dessinnables (Système, Pendule, Ressort). Nous avons remplacé les pointeurs à la C de la collection
+de Système par des unique_ptr, facilitant l'implémentation et faisant du sens. Nous avons également réussi à afficher
+un système de pendule dans un TextViewer.
 
 --------------------------------------------------
 ## Semaine 8 :
 
-Essai d'afficher un système sur QT [pas réussi]
-Implémentation de la classe IntegrateurNewmark
-Tests d'intégrateurs [problème avec Newmark]
-Revisite de la classe Ressort [plus de problème]
-Simulation d'un pendule sur QT [réussi]
-Amélioration de l'affichage (dessineSphere())
-Nouveau constructeur pour Oscillateur (avec support à dessin)
+Nous essayons maintenant d'afficher un système sur QT mais l'implémentation se révèle difficile. Le professeur a expliqué l'
+implémentation de TextViewer pour efffacer le fichier déjà écrit, il faut fermer le flot dans le destructeur de TextViewer.
+La classe IntégrateurNewmark a été implémantée mais semble avoir un décalage de précision à résoudre. La classe ressort
+ne possède plus d'erreurs, il s'agissait d'une erreur d'écrire dans la méthode évolution. Nous avons ajouté les librairies dans
+Qt pour afficher une sphère. Un pendule a été affiché sur Qt correctement, touefois seulement un pendule et non pas un système.
+Nous avons aussi changé le constructeur de Oscillateur pour ajouter un support à dessin directement.
 
 --------------------------------------------------
 ## Semaine 9 :
 
-Revisite d'IntegrateurNewmark [problème]
-Modifications des méthodes dessineSupport()
-Modification de l'affichage QT (lignes horizontales, axes)
-Affichage graphique d'un système de pendules et de ressorts [réussi]
-Problème de sortie de fichier
+Nous avons corrigé integrateurNewmark, le problème venait d'une division de deux entiers qui renvoyaient alors la mauvaise valeur.
+Nous avons modifié les méthodes dessineSupport sur Qt pour avoir l'affichage d'un pendule et d'un ressort recherché. Nous
+avons également rajouté une grille horizontale pour donner un effet de profondeur à l'affichage 3D. Nous avons réussi à afficher
+un système de pendule et de ressorts, ainsi qu'une ligne reliant l'oscillateur.
 
 --------------------------------------------------
 ## Semaine 10 :
 
-Implémentation de la classe OscillateursCouples
-Création de la classe PenduleDouble
-Héritage
-Affichage d'un pendule double [réussi en texte]
-Reviste de la méthode d'évolution de PenduleDouble
-Premiers essais avec gnuplot [problèmes]
-Nettoyage global du code
-Création d'un nouveau constructeur pour TextViewer
+Nous avons implémenté la classe OscillateursCouples qui EST un Oscillateur. En effet cela facilitait la compatibiltié avec
+les méthodes d'intégrations. Le deuxième angle du deuxième pendule d'un pendule double sera enregistrée dans la deuxième coordonnée
+du Vecteur Position de l'objet Pendule Double. Tous les oscillateurs couplés seront ainsi des oscillateurs. Nous avons réussi
+sans trop de soucis à afficher un pendule double sur TextViewer. Le code a été assez nettoyé et des commentaires ont été ajouté. 
+Le constructeur de TextViewer a été modifié pour accepter des noms de fichier en argument.
 
 --------------------------------------------------
 ## Semaine 11 :
 
-
-Affichage d'un pendule double sur QT [réussi]
-Amélioration de l'intégrateur de Newmark
-Divers tests sur les intégrateurs [excellents]
-Création des classes PenduleRessort, Chariot et PenduleLiesRessorts
-Affichage graphique de divers oscillateurs/oscillateurs couplés [bons]
-Implémentation de la classe IntegrateurRungeKutta
-Gnuplot [mieux]
-Divers tests sur les integrateurs [réussis]
-Création de la classe PenduleTriple [+ affichage]
-Makefiles
-Compilation du code sous Geany [pas de problème]
-Document sur les liens d'héritage
-
+Le pendule double a été affiché sur Qt, tous les intégrateurs sont implémentés et renvoient les valeures attendues. Les oscillateurs couplés 
+Pendules ressort, Chario et pendules liés par un ressort ont été ajouté avec partie graphique, tout en s'assurant que 
+la sortie sur TextViewer marchait. Il fallait prendre en compte la coordonnée angulaire ou cartésienne dans le dessin.
+Un pendule Triple a été ajouté avec des équations trouvées sur internet (source https://www.researchgate.net/figure/Triple-pendulum-with-the-datum-at-the-origin-O_fig1_277088965)
+L'affichage est fonctionnel mais le pendule triple parait instable. Quand la vitesse initiale est légèrement trop élevée
+le pendule acfcfélère puis disparait. Gnuplot commence à fonctionner et nous voyons des résultats attendus. Le code n'a
+pas de problèmes à compiler dans les ordinateurs du CO et le makefile prend forme.Le document expliquant les liens d'héritages
+et le readme sont bientot finis.
 
 --------------------------------------------------
 ## Semaine 12 :
 
-
+Tous les oscillateurs ont été implémentés, au total de neuf. Pour l'affichage en 3D avec un
