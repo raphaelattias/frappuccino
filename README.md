@@ -10,12 +10,13 @@ Ce programme permet de simuler de nombreux oscillateurs. Il est possible de sél
 Tous les oscillateurs propose un constructeur par défaut permettant d'initialiser tous les attributs caractéristiques : masse, longueur, coefficient de frottement...
 Des exemples de constructeurs sont proposés dans le main() et sont disponibles dans les fichiers .h, voici deux exemples:
 ```
-Pendule P({Position initiale}, {Vitesse Initiale}, {Origine du repère}, [Masse], [Longueur], [Coefficient de frottement], [Support à Dessin])<br>
-```
+Pendule P({Position initiale}, {Vitesse Initiale}, {Origine du repère}, [Masse], [Longueur], [Coefficient de frottement], [Support à Dessin])
 Pendule P({7,0,0}, {0,0}, {0,0, 0}, 2, 1, 0, &text)
-2. Ressort({Position initiale}, {Vitesse Initiale}, {Origine du repère}, [Masse], [Longueur], [Coefficient de frottement], [Raideur], {Orientation},[Support à Dessin])<br>
-Ressort R1({1,0}, {1,0}, {0,0,0}, 3, 0.01, 0.01, 10, {1, 0}, &vue);
-
+```
+```
+Ressort({Position initiale}, {Vitesse Initiale}, {Origine du repère}, [Masse], [Longueur], [Coefficient de frottement], [Raideur], {Orientation},[Support à Dessin])
+Ressort R1({1,0}, {1,0}, {0,0,0}, 3, 0.01, 0.01, 10, {1, 0}, &vue)
+```
 # Initalisation d'un Vecteur
 Les Vecteurs sont une structure de donnée équipée de méthodes pour les manipuler, utilisées dans le calcul des oscillateurs et des intégrateurs. Les constructeurs sont :
 1. Initialisation d'un vecteur nul de dimension n: **Vecteur V(n)**
