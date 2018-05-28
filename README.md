@@ -36,6 +36,7 @@ Les méthodes principales proposées sont:
 2. Retourner le vecteur position : ```o.get_position()```
 3. Retourner le vecteur vitesse : ```o.get_vitesse()```
 4. Afficher les coordonnées actuelles (i.e Vecteur position et Vecteur vitesse) : ```o.afficher_evolution([ostream& sortie = cout])```
+5. Afficher un oscillateur sur son support à dessin : ```o.dessine([INTEGRATEUR], [PAS DE TEMPS], [NOMBRE DE FOIS])```
 
 # Classe Vecteur
 
@@ -72,4 +73,8 @@ Dans le fichier ./text/mainTextViewer.cpp doivent être entrées les instruction
 1. Initialiser les oscilleurs avec comme dernier argument le support de sorti choisi, exemple: <br>
 ```Pendule P({7,0,0}, {0,0}, {0,0, 0}, 2, 1, 0, &text)```
 2. Ajouter un (ou plusieurs) oscillateur à l'aide la méthode ```Systeme::s.ajouter([OSCILLATEUR])```
-3. 
+3. Modifier le nombre d'affichages voulus : ```double nb = [NOMBRE DE FOIS]```
+4. Compiler le projet
+
+## Remarques
+Pour un système, les oscillateurs sont affichés simultanéments. Il est également possible d'utiliser la méthode  ```s.dessine([INTEGRATEUR], [PAS DE TEMPS], [NOMBRE DE FOIS])```. 
