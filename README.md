@@ -7,6 +7,11 @@ Ce programme permet de simuler de nombreux oscillateurs. Il est possible de sél
 
 ![screenshot](https://i.imgur.com/TfZn8lN.png)
 
+
+### Installation
+Ouvrir le fichier ex_10.pro avec Qt_Creator
+
+
 # Classe Oscillateur
 
 ## Initialisation d'un Oscillateur
