@@ -1,0 +1,52 @@
+CXX= g++
+CC=$(CXX)
+
+CXXFLAGS = -std=c++11 -pedantic -Wall # supprimer -ansi
+CXXFLAGS += -pedantic -Wall
+CXXFLAGS += -O2
+CXXFLAGS += -pg                 # pour profiler
+LDFLAGS  += -pg                 # pour profiler
+
+all : exercicepneuf
+
+
+constantes.o : constantes.cpp constantes.h
+
+dessinable.o : dessinable.cpp dessinable.h
+
+integrateur.o : integrateur.cpp integrateur.h
+
+integrateurEulerCromer.o : integrateurEulerCromer.cpp integrateurEulerCromer.h
+
+integrateurNewmark.o : integrateurNewmark.cpp integrateurNewmark.hpp
+
+IntegrateurRungeKutta.o : IntegrateurRungeKutta.cpp IntegrateurRungeKutta.h
+
+oscillateur.o : oscillateur.cpp oscillateur.h
+
+pendule.o : pendule.cpp pendule.h
+
+ressort.o : ressort.cpp ressort.h
+
+supportadessin.o : supportadessin.cpp supportadessin.h
+
+systeme.o : systeme.cpp systeme.h
+
+vecteurunitaire.o : vecteur_unitaire.cpp vecteur_unitaire.h
+
+vecteur.o : vecteur.cpp vecteur.h
+
+TextViewer.o : TextViewer.cpp TextViewer.h
+
+
+exercicepneuf.o : exercicepneuf.cpp ressort.h supportadessin.h integrateurEulerCromer.h integrateurNewmark.hpp IntegrateurRungeKutta.h TextViewer.h systeme.h pendule.h
+
+exercicepneuf : exercicepneuf.o ressort.o TextViewer.o vecteur.o systeme.o supportadessin.o pendule.o oscillateur.o IntegrateurRungeKutta.o integrateurNewmark.o integrateurEulerCromer.o integrateur.o dessinable.o constantes.o
+
+
+clean :
+	rm *.o
+
+
+#gcc -MM nom.cc
+
