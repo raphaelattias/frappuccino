@@ -10,6 +10,16 @@ Ce programme permet de simuler de nombreux oscillateurs. Il est possible de sél
 
 ## Initialisation d'un Oscillateur
 Tous les oscillateurs propose un constructeur par défaut permettant d'initialiser tous les attributs caractéristiques : masse, longueur, coefficient de frottement...
+Les oscillateurs proposés sont :
+1. Ressort
+2. Pendule
+3. Pendule Double
+4. Pendule Ressort
+5. Chariot
+6. Pendules liés par un ressort
+7. Pendule Triple
+8. Ressort Double
+9. Pendule Torsion <br>
 Des exemples de constructeurs sont proposés dans le main() et sont disponibles dans les fichiers .h, voici deux exemples:
 ```
 Pendule P({Position initiale}, {Vitesse Initiale}, {Origine du repère}, [Masse], [Longueur], [Coefficient de frottement], [Support à Dessin])
@@ -44,7 +54,7 @@ Les constructeurs habituels sont proposés multiplication scalaire, addition, so
 # Utilisation Graphique
 Dans le fichier ./Qt_GL/main_qt_gl.cc doivent être entrées les instructions pour l'affichage graphique. 9 exemples d'oscillateurs sont déjà proposés. Les étapes à suivre sont :
 1. Choisir l'intégrateur à l'aide de la méthode ```GLWidget::w.set_integrateur([INTEGRATEUR])```.
-2. Ajouter un oscillateur au système à l'aide de la méthode ```GLWidget::ajouter_oscillateur([OSCILLATEUR])```.
+2. Ajouter un (ou plusieurs) oscillateur au système à l'aide de la méthode ```GLWidget::ajouter_oscillateur([OSCILLATEUR])```.
 3. Compiler le projet
 
 ## Options
@@ -56,3 +66,10 @@ De plus des options sont proposés afin de modifier l'affichage.
 1. La touche ```P```permet de revenir au point de vue initial.
 2. La touche ```C```permet d'activer l'espace des phases.
 3. La touche ```N```permet d'activer le suivi de caméra.
+
+# Utilisation Texte
+Dans le fichier ./text/mainTextViewer.cpp doivent être entrées les instructions pour l'affichage texte. 2 exemples d'oscillateurs sont déjà proposés. Les étapes à suivre sont :
+1. Initialiser les oscilleurs avec comme dernier argument le support de sorti choisi, exemple: <br>
+```Pendule P({7,0,0}, {0,0}, {0,0, 0}, 2, 1, 0, &text)```
+2. Ajouter un (ou plusieurs) oscillateur à l'aide la méthode ```Systeme::s.ajouter([OSCILLATEUR])```
+3. 
