@@ -38,7 +38,6 @@ void Vecteur::set_coord(size_t const& rang, double const&  nouvelle_valeur){
         } else if (rang <= 0){
             throw runtime_error("Erreur: le rang entré est incorrect, égal à 0");
         }
-        
         vecteur[rang-1] = nouvelle_valeur;
     } catch (const exception &ex) {
         cerr << ex.what() << endl;

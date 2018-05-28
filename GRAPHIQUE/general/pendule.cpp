@@ -1,11 +1,3 @@
-//
-//  pendule.cpp
-//  PROJET
-//
-//  Created by Raphael Attias on 23/03/2018.
-//  Copyright © 2018 Raphael Attias. All rights reserved.
-//
-
 #include "pendule.h"
 #include "oscillateur.h"
 #include "integrateur.h"
@@ -17,15 +9,12 @@ class Integrateur;
 using namespace std;
 
 
-Pendule::Pendule(SupportADessin* SAD,Vecteur position, Vecteur vitesse, Vecteur origine, double masse, double longueur, double coefFrottement):
-    Oscillateur(SAD, position,vitesse,origine,masse,longueur, coefFrottement) {} ;
-
+Pendule::Pendule(Vecteur position, Vecteur vitesse, Vecteur origine, double masse, double longueur, double coefFrottement, SupportADessin* SAD):
+    Oscillateur(position,vitesse,origine,masse,longueur, coefFrottement, SAD) {} ;
 
 Vecteur Pendule::evolution(Vecteur const& position_, Vecteur const& vitesse_) const {
  Vecteur sortie({(-g.norme()/longueur)*sin(position_.get_value(1))});
- //   Vecteur sortie({0, -9.81});
     return sortie;
-
 }
 
 unique_ptr<Pendule> Pendule::clone() const{

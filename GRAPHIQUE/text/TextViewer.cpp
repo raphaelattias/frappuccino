@@ -19,25 +19,19 @@
 
 using namespace std;
 
-TextViewer::TextViewer(string nom_de_fichier): nom_de_fichier(nom_de_fichier){
+TextViewer::TextViewer(ostream& sortie): fichier(&sortie), nom_de_fichier("data.txt"){
     i = 0;
-    fichier.open(nom_de_fichier, fstream::trunc);
 }
 
-TextViewer::~TextViewer(){
-    fichier.close();
-}
-
+TextViewer::~TextViewer(){}
 
 void TextViewer::dessineOsc(Oscillateur const& oscillateur) {
-    if (fichier.fail()) {
+    if (fichier->fail()) {
         cerr << "Impossible" << endl;
     } else {
-        oscillateur.afficher_evolution(fichier);
+        oscillateur.afficher_evolution(*fichier);
     }
 }
-
-
 
 void TextViewer::dessineSupport(Pendule const& pendule) {
     dessineOsc(pendule);
@@ -46,18 +40,19 @@ void TextViewer::dessineSupport(Ressort const& ressort) {
     dessineOsc(ressort);
 }
 
-void TextViewer::dessineSupport(RessortDouble const& ressort) {
-    dessineOsc(ressort);
-}
+void TextViewer::dessineSupport(Systeme const& systeme) {
+ //   systeme.afficher(*fichier);
+};
+
 
 void TextViewer::dessineSupport(PenduleTorsion const& ressort) {
     dessineOsc(ressort);
 }
 
+void TextViewer::dessineSupport(RessortDouble const& ressort) {
+    dessineOsc(ressort);
+}
 
-void TextViewer::dessineSupport(Systeme const& systeme) {
-    systeme.afficher(fichier);
-};
 
 void TextViewer::dessineSupport(PenduleDouble const& pd){
     dessineOsc(pd);
@@ -77,10 +72,5 @@ void TextViewer::dessineSupport(Chariot const& chariot){
 
 void TextViewer::dessineSupport(PenduleTriple const& pdt){
     dessineOsc(pdt);
-}
-
-void TextViewer::ajouter(string const& txt){
-    fichier << txt;
-
 }
 

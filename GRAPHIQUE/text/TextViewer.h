@@ -17,27 +17,25 @@
 class TextViewer : public SupportADessin {
 
 public:
-    TextViewer(std::string nom_de_fichier = "data.txt");
+    TextViewer(std::ostream& sortie = std::cout);
     ~TextViewer();
+
 private:
-    
-    
+
     virtual void dessineSupport(Pendule const& pendule) override;
     virtual void dessineSupport(Ressort const& ressort) override;
     virtual void dessineSupport(Systeme const& systeme) override;
     virtual void dessineSupport(PenduleDouble const& PenduleDouble) override;
     virtual void dessineSupport(PenduleRessort const& penduleressort) override;
-    virtual void dessineSupport(Chariot const& penduleressort) override;
     virtual void dessineSupport(RessortDouble const& penduleressort) override;
     virtual void dessineSupport(PenduleTorsion const& penduleressort) override;
+    virtual void dessineSupport(Chariot const& penduleressort) override;
     virtual void dessineSupport(PendulesLiesRessort const& penduleressort) override;
         virtual void dessineSupport(PenduleTriple const& penduleressort) override;
     void dessineOsc(Oscillateur const& oscillateur);
     std::string nom_de_fichier;
 
-    std::ofstream fichier;
-
-    void ajouter(std::string const& txt);
+    std::ostream* fichier;
 
     double i;
 };

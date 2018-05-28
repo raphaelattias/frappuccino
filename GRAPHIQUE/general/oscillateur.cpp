@@ -11,7 +11,6 @@ using namespace std;
 
 
 // Attributs :
-
 Vecteur position;
 Vecteur vitesse;
 double masse;
@@ -19,8 +18,7 @@ double longueur;
 Vecteur unitaireA;
 
 // Méthodes :
-
-Oscillateur::Oscillateur(SupportADessin* SAD, Vecteur vecteur_etat, Vecteur vitesse, Vecteur origine, double masse, double longueur, double coefFrottement):
+Oscillateur::Oscillateur(Vecteur vecteur_etat, Vecteur vitesse, Vecteur origine, double masse, double longueur, double coefFrottement, SupportADessin* SAD):
 Dessinable(SAD),position(vecteur_etat), vitesse(vitesse), origine(origine), masse(masse), longueur(longueur), coefFrottement(coefFrottement){};
 
 Vecteur Oscillateur::evolution(Vecteur const& position_, Vecteur const& vitesse_) const{

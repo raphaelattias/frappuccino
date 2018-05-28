@@ -9,6 +9,8 @@ SOURCES += \
     dessinable.cpp \
     integrateur.cpp \
     IntegrateurEulerCromer.cpp \
+    IntegrateurNewmark.cpp \
+IntegrateurRungeKutta.cpp \
     oscillateur_couple.cpp \
     main.cpp \
     oscillateur.cpp \
@@ -18,14 +20,15 @@ SOURCES += \
     TextViewer.cpp \
     testintegrateur.cpp\
     vecteur_unitaire.cpp \
+supportadessin.cpp \
     vecteur.cpp
-
-
 
 HEADERS += \
     constantes.h \
     integrateur.h \
     integrateurEulerCromer.h \
+    IntegrateurRungeKutta.h \
+    integrateurNewmark.hpp\
     oscillateur.h \
     oscillateur_couple.hpp\
     pendule.h \

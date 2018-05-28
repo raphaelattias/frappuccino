@@ -17,12 +17,10 @@ using namespace std;
 double raideur;
 Vecteur unitaire;
 
-//ON A REMPLACE VECTEUR UNITAIRE PAR VECTEUR TOUT COURT PARCE Que fuck it MATE THUG LIFE
-
-Ressort::Ressort(SupportADessin* SAD, Vecteur position, Vecteur vitesse, Vecteur origine, double masse, double longueur, double coefFrottement, double raideur, Vecteur unitaire): Oscillateur(SAD, position, vitesse, origine, masse, longueur, coefFrottement), raideur(raideur), unitaire(unitaire){};
+Ressort::Ressort(Vecteur position, Vecteur vitesse, Vecteur origine, double masse, double longueur, double coefFrottement, double raideur, Vecteur unitaire, SupportADessin* SAD): Oscillateur(position, vitesse, origine, masse, longueur, coefFrottement, SAD), raideur(raideur), unitaire(unitaire*(1.0/(unitaire.norme()))){};
 
 Vecteur Ressort::evolution(Vecteur const& position_, Vecteur const& vitesse_) const {
-    Vecteur sortie({-raideur*position.get_value(1)/masse - coefFrottement*vitesse.get_value(1)/masse + g*unitaire});
+    Vecteur sortie({-raideur*position_.get_value(1)/masse - coefFrottement*vitesse_.get_value(1)/masse+g.prod_scalaire(unitaire)});
     
     return sortie;
 }
@@ -42,4 +40,8 @@ void Ressort::dessine(Integrateur* integrateur,double const& dt, int const& i){
             integrateur->integrer(*this, dt);
         }
     }
+}
+
+Vecteur Ressort::get_unitaire() const {
+    return unitaire;
 }

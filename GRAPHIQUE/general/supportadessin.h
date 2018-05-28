@@ -1,4 +1,3 @@
-
 #pragma once
 class Pendule;
 class Ressort;
@@ -8,6 +7,8 @@ class PenduleRessort;
 class Chariot;
 class PendulesLiesRessort;
 class PenduleTriple;
+class PenduleTorsion;
+class RessortDouble;
 
 class SupportADessin{
 public:
@@ -19,8 +20,6 @@ public:
     virtual void dessineSupport(Chariot const&) = 0;
     virtual void dessineSupport(PendulesLiesRessort const&) = 0;
     virtual void dessineSupport(PenduleTriple const&) = 0;
-    
-
-public:
-    virtual void remettre_a_zero() = 0;
+    virtual void dessineSupport(RessortDouble const&) = 0;
+    virtual void dessineSupport(PenduleTorsion const&) = 0;
 };

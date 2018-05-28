@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.6.1, 2018-05-26T16:58:02. -->
+<!-- Written by QtCreator 4.6.1, 2018-05-28T20:14:03. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -643,7 +643,7 @@
     <value type="QString" key="Ios.run_arguments"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Exécuter sur iPhone de Raphael</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Run  on iPhone de Raphael</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.IosRunConfiguration:/Users/raphaelattias/Desktop/LA VRAIE/Qt_GL/Qt_GL.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.IosRunConfiguration:/Users/raphaelattias/Downloads/frappuccino-FINAL/GRAPHIQUE/Qt_GL/Qt_GL.pro</value>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -699,7 +699,7 @@
     <value type="QString" key="Ios.run_arguments"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Exécuter sur iPhone de Raphael</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Run  on iPhone de Raphael2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.IosRunConfiguration:/Users/raphaelattias/Desktop/LA VRAIE/text/text.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.IosRunConfiguration:/Users/raphaelattias/Downloads/frappuccino-FINAL/GRAPHIQUE/text/text.pro</value>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>

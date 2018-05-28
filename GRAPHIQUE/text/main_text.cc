@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include "text_viewer.h"
 #include "contenu.h"
 using namespace std;
@@ -20,4 +20,4 @@ int main()
   c.dessine();
 
   return 0;
-}
+}*/

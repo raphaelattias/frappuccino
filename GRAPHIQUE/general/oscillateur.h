@@ -1,6 +1,7 @@
 #pragma once
 #include <stdio.h>
 #include "vecteur.h"
+#include <vector>
 #include <iostream>
 #include <fstream>
 #include "dessinable.h"
@@ -11,13 +12,11 @@ protected:
     Vecteur position;
     Vecteur vitesse;
     Vecteur origine;
-    Vecteur unitaireA;
     double masse;
     double longueur;
-    double coefFrottement;
-    
+    double coefFrottement;    
 public:
-    Oscillateur(SupportADessin* SAD, Vecteur position={0,0,0}, Vecteur vitesse={0,0,0}, Vecteur origine={0,0,0}, double masse=0, double longueur=0, double coefFrottement = 0);
+    Oscillateur(Vecteur position={0,0,0}, Vecteur vitesse={0,0,0}, Vecteur origine={0,0,0}, double masse=0, double longueur=0, double coefFrottement = 0, SupportADessin* SAD = nullptr);
     
     virtual ~Oscillateur(){}
     
@@ -38,5 +37,4 @@ public:
     virtual std::unique_ptr<Oscillateur> copie() const = 0;
     
 };
-
     std::ostream& operator<<(std::ostream& sortie, Oscillateur const& oscillateur);

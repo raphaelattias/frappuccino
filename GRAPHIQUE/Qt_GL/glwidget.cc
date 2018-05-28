@@ -35,11 +35,30 @@ void GLWidget::resizeGL(int width, int height)
   vue.setProjection(matrice);
 }
 
+void GLWidget::activerEspacesDesPhases(){
+    vue.setPhase(1);
+}
+
+void GLWidget::activerSuiviCamera(double z, double nausee){
+    vue.setSuiviCamera(z);
+    vue.setNausee(nausee);
+}
+
+void GLWidget::set_integrateur(Integrateur& I1_){
+    I1 = &I1_;
+}
+
+void GLWidget::ajouter_oscillateur(Oscillateur& P){
+    P.assignerSupport(vue);
+   s.ajouter(P);
+}
+
+
 // ======================================================================
 void GLWidget::paintGL()
 {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  s.dessine(&I1, dt, 1);
+  s.dessine(I1, dt, 1);
 
 }
 
@@ -106,9 +125,21 @@ void GLWidget::keyPressEvent(QKeyEvent* event)
     vue.initializePosition();
     break;
 
+  case Qt::Key_C:
+      activerEspacesDesPhases();
+      break;
+
+  case Qt::Key_N:
+      activerSuiviCamera(-3);
+      break;
+
   case Qt::Key_Space:
 	pause();
 	break;
+
+  case Qt::Key_P:
+    activerSuiviCamera(0);
+    break;
 
    case Qt::Key_O:
       vue.vueZero();

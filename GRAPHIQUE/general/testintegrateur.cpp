@@ -1,11 +1,3 @@
-//
-//  testintegrateur.cpp
-//  PROJET
-//
-//  Created by Raphael Attias on 21/03/2018.
-//  Copyright © 2018 Raphael Attias. All rights reserved.
-//
-
 #include <iostream>
 #include "oscillateur_couple.hpp"
 #include "supportadessin.h"
@@ -20,7 +12,7 @@ int main(){
     IntegrateurEulerCromer I1;
 
 
-    PendulesLiesRessort c(&vue, {1,1}, {0, 0}, {0,0, 0}, 1, 1, 1, 0.8, 0, 0, 50, 0.5, 0.5, 2);
+    PendulesLiesRessort c({1,1}, {0, 0}, {0,0, 0}, 1, 1, 1, 0.8, 0, 0, 50, 0.5, 0.5, 2);
 
     c.dessine(&I1, 0.01, 100);
     
