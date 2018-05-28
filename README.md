@@ -1,5 +1,10 @@
 # frappuccino
 Projet de programmation EPFL 2018 Bachelor Mathématiques (Première première)
 
-### SALUT
-On a un problème avec remettre à 0 qui est dans le protected et on est pas sûr d'avoir capté comment utiliser le friend, on a du mal avec QTCreator.
+# Introduction
+Ce programme permet de simuler de nombreux oscillateurs. Il est possible de sélectionner et représenter 9 oscillateurs déjà proposés mais aussi d'en ajouter. Le programme propose au choix une visualisation texte (TextViewer) ou 3D (OpenGL).
+
+![screenshot](https://i.imgur.com/TfZn8lN.png)
+
+# Utilisation Graphique
+Dans le fichier ./Qt_GL/main_qt_gl.cc 
