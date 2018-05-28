@@ -1,0 +1,47 @@
+CXX= g++
+CC=$(CXX)
+
+CXXFLAGS = -std=c++11 -pedantic -Wall # supprimer -ansi
+CXXFLAGS += -pedantic -Wall
+CXXFLAGS += -O2
+CXXFLAGS += -g
+CXXFLAGS += -pg                 # pour profiler
+LDFLAGS  += -pg                 # pour profiler
+
+all : testIntegrateur
+
+
+Vecteur.o : Vecteur.cc Vecteur.h
+
+testVecteur.o : testVecteur.cc Vecteur.h
+
+constantes.o : constantes.cc constantes.h 
+
+
+Integrateur.o : Integrateur.h
+
+
+
+Oscillateur.o : Oscillateur.cc Oscillateur.h 
+
+testOscillateur.o : testOscillateur.cc Oscillateur.h Vecteur.h constantes.h
+
+
+
+IntegrateurEulerCromer.o : IntegrateurEulerCromer.cc IntegrateurEulerCromer.h 
+
+testIntegrateur.o : testIntegrateur.cc Integrateur.h IntegrateurEulerCromer.h Oscillateur.h Vecteur.h constantes.h
+
+
+testVecteur : Vecteur.o testVecteur.o constantes.o
+
+testOscillateur : testOscillateur.o Oscillateur.o Vecteur.o constantes.o
+
+testIntegrateur : testIntegrateur.o IntegrateurEulerCromer.o Oscillateur.o Vecteur.o constantes.o
+
+
+clean :
+	rm *.o
+
+
+#gcc -MM nom.cc

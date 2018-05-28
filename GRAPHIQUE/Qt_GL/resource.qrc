@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>fragment_shader.glsl</file>
+        <file>vertex_shader.glsl</file>
+        <file>mandelbrot.jpeg</file>
+        <file>cat.jpeg</file>
+    </qresource>
+</RCC>

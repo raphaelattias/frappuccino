@@ -1,0 +1,114 @@
+JOURNAL DE BORD - PROJET DE PROGRAMMATION
+ATTIAS RAPHAEL & EPPLE PASCAL
+EPFL MABA2 - 2018
+
+======================================================================
+
+======================================================================
+
+# SUIVI
+
+## Semaine 1 :
+
+Création de la classe Vecteur
+Réalisations de tous les tests [bons]
+Première approche avec QT, compréhension du logiciel
+Lecture du complément mathématique
+Débugger
+
+--------------------------------------------------
+
+## Semaine 2 :
+
+Paufinement de la classe Vecteur (messages d'erreurs)
+Création du MakeFile
+Fichiers .h et .cpp 
+Ouverture d'un Github pour faciliter la transmission de fichier
+
+--------------------------------------------------
+## Semaine 3 :
+
+Création des constructeurs pour la classe Vecteur
+Surcharge de tous les opérateurs pour les opérations
+entre vecteurs
+Surcharge de l'operateur d'affichage
+Modification de la méthode affiche()
+Création de la classe Oscillateur
+Lecture du complément mathématique
+Réalisation des tests [bons]
+
+--------------------------------------------------
+## Semaine 4 :
+
+Suppression de l'attribut dimension de la classe Vecteur
+Implémentation de la classe Intégrateur
+Héritage entre IntégrateurEC et Intégrateur
+Création de la classe Pendule
+Héritage entres oscillateurs
+Essai de "partager" la fonction evolue() entre plusieurs classes
+Réalisation de divers tests [bons]
+Refonte de la surcharge des opérateurs (const&)
+Prise en main de gnuplot [difficile]
+
+--------------------------------------------------
+## Semaine 5 :
+
+Création du fichier contenant les constantes
+Implémentation des classes Dessins, SupportADessin
+evolue() devient une méthode virtuelle
+Ajout de la méthode dessin() 
+Divers héritages entre classes
+Polymorphisme
+Problème avec la fonction evolue()
+Divers tests effectués [mauvais]
+Refonte de diverses méthodes (const&)
+Oscillateur devient une classe virtuelle
+
+--------------------------------------------------
+## Semaine 6 :
+
+Création de la classe Systeme (plusieurs problèmes)
+Polymorphisme
+Héritage
+Création de la classe Ressort
+Modification de la fonction evolue() (const override)
+Divers tests effectués[moyens] 
+(Ressort ne se comporte pas correctement)
+Implémentation de la classe TextViewer
+Création de la classe VecteurUnitaire [problème]
+Lecture du fichier sur le graphisme
+Premier bilan avec assistant
+Corrections de bugs mineurs
+
+--------------------------------------------------
+## Semaine 7 :
+
+
+
+--------------------------------------------------
+## Semaine 8 :
+
+
+
+--------------------------------------------------
+## Semaine 9 :
+
+
+
+--------------------------------------------------
+## Semaine 10 :
+
+
+
+--------------------------------------------------
+## Semaine 11 :
+
+
+
+--------------------------------------------------
+## Semaine 12 :
+
+
+
+--------------------------------------------------
+## Semaine 13 :
