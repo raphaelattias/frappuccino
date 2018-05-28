@@ -17,16 +17,19 @@ Pendule P({7,0,0}, {0,0}, {0,0, 0}, 2, 1, 0, &text)
 Ressort({Position initiale}, {Vitesse Initiale}, {Origine du repère}, [Masse], [Longueur], [Coefficient de frottement], [Raideur], {Orientation},[Support à Dessin])
 Ressort R1({1,0}, {1,0}, {0,0,0}, 3, 0.01, 0.01, 10, {1, 0}, &vue)
 ```
-# Initalisation d'un Vecteur
+# Classe Vecteur
+
+## Initialisation d'un Vecteur
 Les Vecteurs sont une structure de donnée équipée de méthodes pour les manipuler, utilisées dans le calcul des oscillateurs et des intégrateurs. Les constructeurs sont :
 1. Initialisation d'un vecteur nul de dimension n: **Vecteur V(n)**
 2. Initialisation d'un vecteur à n coordonnées de dimension n: **Vecteur V({1, 2, 3, ... , n})**
 3. Initialisation d'un vecteur à 3 dimensions : **Vecteur V(x, y, z)**<br>
+
+## Méthodes de Vecteur
 Les méthodes principales proposées sont :
 1. Modifier la i-ème coordonnée d'un vecteur: **V.setcoord(i, double x)**
 2. Retourner la i-ème coordonnée d'un vecteur: **V.get_value(i)**<br>
-Les constructeurs habituels sont proposés :
-1. Multiplication scalaire : 
+Les constructeurs habituels sont proposés multiplication scalaire, addition, soustraction. De plus sont implémentés la surchage de l'opérateur ```<<```pour l'affichage, ```==``` pour la comparaison, ```^``` pour le produit scalaire.
 
 # Utilisation Graphique
 Dans le fichier ./Qt_GL/main_qt_gl.cc doivent être entrées les instructions pour l'affichage graphique. 9 exemples d'oscillateurs sont déjà proposés. Les étapes à suivre sont :
