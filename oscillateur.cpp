@@ -1,8 +1,6 @@
 #include "oscillateur.h"
 #include "vecteur.h"
-
 #include <iostream>
-#include <fstream>
 #include <iomanip>
 #include <vector>
 #include <cmath>
@@ -16,28 +14,29 @@ Vecteur position;
 Vecteur vitesse;
 double masse;
 double longueur;
-Vecteur unitaireA;
 
 // Méthodes :
 
-Oscillateur::Oscillateur(SupportADessin* SAD, Vecteur vecteur_etat, Vecteur vitesse, double masse, double longueur, double coefFrottement):
-Dessinable(SAD),position(vecteur_etat), vitesse(vitesse), masse(masse), longueur(longueur), coefFrottement(coefFrottement){};
-
-Vecteur Oscillateur::evolution(Vecteur const& position_, Vecteur const& vitesse_) const{
-    Vecteur sortie({0, -9.81});
-    return sortie;
-}
+Oscillateur::Oscillateur(Vecteur vecteur_etat, Vecteur vitesse, double masse, double longueur, double coefFrottement):position(vecteur_etat), vitesse(vitesse), masse(masse), longueur(longueur), coefFrottement(coefFrottement){};
 
 ostream& Oscillateur::afficher_evolution(ostream& sortie) const{
-    sortie << setw(10) << position;
-    sortie << setw(5);
-    sortie << setw(10) << vitesse;
+    sortie << "# Oscillateur" << endl;
+    sortie << position << " # parametre " << endl;
+    sortie << vitesse << " # vitesse " << endl;
     sortie << endl;
     return sortie;
 }
 
 void Oscillateur::set_vecteurs(Vecteur const& vect_position, Vecteur const& vect_vitesse) {
+    set_position(vect_position);
+    set_vitesse(vect_vitesse);
+}
+
+void Oscillateur::set_position(Vecteur const& vect_position){
     position = vect_position;
+}
+
+void Oscillateur::set_vitesse(Vecteur const& vect_vitesse){
     vitesse = vect_vitesse;
 }
 
@@ -53,6 +52,6 @@ Vecteur Oscillateur::get_position() const {
     return position;
 }
 
-ostream& operator<<(ostream& sortie, Oscillateur const& oscillateur){
+std::ostream& operator<<(std::ostream& sortie, Oscillateur const& oscillateur){
     return oscillateur.afficher_evolution(sortie);
 }

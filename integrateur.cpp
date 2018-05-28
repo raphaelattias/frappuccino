@@ -12,7 +12,7 @@
 
 using namespace std;
 
-//Integrateur::Integrateur(double pas_de_temps): pas_de_temps(pas_de_temps){};
+Integrateur::Integrateur(double pas_de_temps): pas_de_temps(pas_de_temps){};
 
 void Integrateur::afficherEvolution(Oscillateur const& oscillateur) const{
     cout << "Vecteur de position :" << setprecision(10) << oscillateur.get_position();
@@ -20,3 +20,4 @@ void Integrateur::afficherEvolution(Oscillateur const& oscillateur) const{
     cout << endl;
     }
 
+double pas_de_temps;

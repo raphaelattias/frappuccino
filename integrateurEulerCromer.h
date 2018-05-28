@@ -12,7 +12,8 @@
 
 class IntegrateurEulerCromer: public Integrateur {
 public:
-    virtual void integrer(Oscillateur &O1, double const& pas_de_temps = 0.01) override;
+    IntegrateurEulerCromer(double pas_de_temps);
+    virtual void integrer(Oscillateur &O1) override;
 };
 
 
