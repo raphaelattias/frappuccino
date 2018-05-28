@@ -6,6 +6,14 @@ Ce programme permet de simuler de nombreux oscillateurs. Il est possible de sél
 
 ![screenshot](https://i.imgur.com/TfZn8lN.png)
 
+# Initialisation d'un Oscillateur
+Tous les oscillateurs propose un constructeur par défaut permettant d'initialiser tous les attributs caractéristiques : masse, longueur, coefficient de frottement...
+Des exemples de constructeurs sont proposés dans le main() et sont disponibles dans les fichiers .h, voici deux exemples:
+1. Pendule P({Position initiale}, {Vitesse Initiale}, {Origine du repère}, [Masse], [Longueur], [Coefficient de frottement], [Support à Dessin])
+Pendule P({7,0,0}, {0,0}, {0,0, 0}, 2, 1, 0, &text)
+2. Ressort({Position initiale}, {Vitesse Initiale}, {Origine du repère}, [Masse], [Longueur], [Coefficient de frottement], [Raideur], [Orientation],[Support à Dessin])
+Ressort R1({1,0}, {1,0}, {0,0,0}, 3, 0.01, 0.01, 10, {1, 0}, &vue);
+
 # Utilisation Graphique
 Dans le fichier ./Qt_GL/main_qt_gl.cc doivent être entrées les instructions pour l'affichage graphique. 9 exemples d'oscillateurs sont déjà proposés. Les étapes à suivre sont :
 1. Choisir l'intégrateur à l'aide de la méthode **GLWidget::w.set_integrateur([INTEGRATEUR])**.
