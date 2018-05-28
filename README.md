@@ -6,7 +6,9 @@ Ce programme permet de simuler de nombreux oscillateurs. Il est possible de sél
 
 ![screenshot](https://i.imgur.com/TfZn8lN.png)
 
-# Initialisation d'un Oscillateur
+# Classe Oscillateur
+
+## Initialisation d'un Oscillateur
 Tous les oscillateurs propose un constructeur par défaut permettant d'initialiser tous les attributs caractéristiques : masse, longueur, coefficient de frottement...
 Des exemples de constructeurs sont proposés dans le main() et sont disponibles dans les fichiers .h, voici deux exemples:
 ```
@@ -17,6 +19,14 @@ Pendule P({7,0,0}, {0,0}, {0,0, 0}, 2, 1, 0, &text)
 Ressort({Position initiale}, {Vitesse Initiale}, {Origine du repère}, [Masse], [Longueur], [Coefficient de frottement], [Raideur], {Orientation},[Support à Dessin])
 Ressort R1({1,0}, {1,0}, {0,0,0}, 3, 0.01, 0.01, 10, {1, 0}, &vue)
 ```
+
+## Méthodes de Oscillateur
+Les méthodes principales proposées sont:
+1. Modifier les vecteurs de position et de vitesse d'un Oscillateur : ```o.set_vecteurs({Vecteur Position}, {Vecteur Vitesse})```.
+2. Retourner le vecteur position : ```o.get_position()```
+3. Retourner le vecteur vitesse : ```o.get_vitesse()```
+4. Afficher les coordonnées actuelles (i.e Vecteur position et Vecteur vitesse) : ```o.afficher_evolution([ostream& sortie = cout])```
+
 # Classe Vecteur
 
 ## Initialisation d'un Vecteur
@@ -41,3 +51,8 @@ Dans le fichier ./Qt_GL/main_qt_gl.cc doivent être entrées les instructions po
 De plus des options sont proposés afin de modifier l'affichage. 
 1. Activer l'espace des phases avec la méthode ```GLWidget::w.activerEspaceDesPhases()```. Le tracé de l'espace des phases est proposé pour pendule double, la majorité des autres pendules affiche une sphère se trouvant à (position, vitesse.
 2. Activer le suivi de la caméra avec la méthode ```GLWidget::w.activerSuiviCamera([double z = 0], [bool nausee = 0])```. Le paramètre z permet de définir la distance à laquelle la caméra se trouve de l'oscillateur, et nausée oriente la caméra en fonction de la vitesse de l'oscillateur.
+
+## Accès rapides au clavier
+1. La touche ```P```permet de revenir au point de vue initial.
+2. La touche ```C```permet d'activer l'espace des phases.
+3. La touche ```N```permet d'activer le suivi de caméra.
