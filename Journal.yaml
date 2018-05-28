@@ -127,4 +127,8 @@ et le readme sont bientot finis.
 --------------------------------------------------
 ## Semaine 12 :
 
-Tous les oscillateurs ont été implémentés, au total de neuf. Pour l'affichage en 3D avec un
+Tous les oscillateurs ont été implémentés, au total de neuf. Pour l'affichage en 3D nous avons ajouté un attribut de classe Vecteur Origine à 
+tous les oscillateurs pour savoir où le placer sur le repère. L'affichage se fait comme attendu. Il y a également l'espace
+des phases avec des sphères. Nous avons réussi à faire l'espace des phasess avec un tracé de lignes seulement pour un
+oscillateur, avec Pendule Double. Nous avons égalemnt ajouté le suivi de caméra avec ou sans nausée. Toutes les méthodes
+pratiques à l'utilisateurs sont dans les mains correspondants et l'utilisation du programme nous semble simple.
