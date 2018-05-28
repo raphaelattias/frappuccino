@@ -2,6 +2,10 @@
 Raphael ATTIAS & Pascal EPPLE <br>
 Projet de programmation EPFL 2018 Bachelor Mathématiques
 
+1. Tous les exercices du projet ont été réalisés (de P1 à P13). Nous avons une interface graphique et textuelle. Diverses extensions ont également été ajoutées (accrocher la caméra à l'oscillateur, tous les oscillateurs et intégrateurs du complément mathématiques ont été implémentés, un pendule triple a été rajouté, une grille en 3 dimensions permet d'avoir un effet de profondeur plus marqué).
+2. Une version graphique est disponible avec la bilbiothèque graphique Qt.
+3. 80h passées par personne sur le projet.
+
 # Introduction
 Ce programme permet de simuler de nombreux oscillateurs. Il est possible de sélectionner et représenter 9 oscillateurs déjà proposés mais aussi d'en ajouter. Le programme propose au choix une visualisation texte (TextViewer) ou 3D (OpenGL).
 
