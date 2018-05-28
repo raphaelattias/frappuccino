@@ -1,5 +1,5 @@
 # frappuccino
-Raphael ATTIAS & Pascal EPPLE
+Raphael ATTIAS & Pascal EPPLE <br>
 Projet de programmation EPFL 2018 Bachelor Mathématiques
 
 # Introduction
