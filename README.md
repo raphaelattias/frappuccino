@@ -1,5 +1,6 @@
 # frappuccino
-Projet de programmation EPFL 2018 Bachelor Mathématiques (Première première)
+Raphael ATTIAS & Pascal EPPLE
+Projet de programmation EPFL 2018 Bachelor Mathématiques
 
 # Introduction
 Ce programme permet de simuler de nombreux oscillateurs. Il est possible de sélectionner et représenter 9 oscillateurs déjà proposés mais aussi d'en ajouter. Le programme propose au choix une visualisation texte (TextViewer) ou 3D (OpenGL).
